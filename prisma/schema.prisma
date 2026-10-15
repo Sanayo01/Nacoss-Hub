@@ -55,9 +55,10 @@ model Announcement {
   id               String   @id @default(cuid())
   title            String
   body             String
-  category         String   // General | Academic | Event | Urgent | Deadline
+  category         String // General | Academic | Event | Urgent | Deadline
   pinned           Boolean  @default(false)
   authorOfficeSlug String
+  viewCount        Int      @default(0)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 }
@@ -78,14 +79,14 @@ model Document {
   id          String   @id @default(cuid())
   title       String
   description String
-  category    String   // Official Letter | Proposal | Form | Template | Handbook
+  category    String // Official Letter | Proposal | Form | Template | Handbook
   fileUrl     String
   updatedAt   DateTime @updatedAt
   createdAt   DateTime @default(now())
 }
 
 model SiwesPlacement {
-  id                String    @id @default(cuid())
+  id                String   @id @default(cuid())
   studentName       String
   level             String
   company           String
@@ -96,14 +97,14 @@ model SiwesPlacement {
   endDate           String?
   howIGotIn         String?
   tipsToApply       String
-  contactPreference String    @default("none") // none | LinkedIn only | email via the Hub
-  consentGiven      Boolean   @default(true)
-  isApproved        Boolean   @default(false)
-  createdAt         DateTime  @default(now())
+  contactPreference String   @default("none") // none | LinkedIn only | email via the Hub
+  consentGiven      Boolean  @default(true)
+  isApproved        Boolean  @default(false)
+  createdAt         DateTime @default(now())
 }
 
 model Alumnus {
-  id             String    @id @default(cuid())
+  id             String   @id @default(cuid())
   name           String
   graduationYear String
   currentCompany String
@@ -112,9 +113,9 @@ model Alumnus {
   techStack      String
   advice         String
   linkedinUrl    String?
-  consentGiven   Boolean   @default(true)
-  isApproved     Boolean   @default(false)
-  createdAt      DateTime  @default(now())
+  consentGiven   Boolean  @default(true)
+  isApproved     Boolean  @default(false)
+  createdAt      DateTime @default(now())
 }
 
 model SiwesCheckIn {
@@ -122,26 +123,26 @@ model SiwesCheckIn {
   studentName String
   level       String
   company     String
-  status      String   // STILL_PLACED | COMPLETED | SEEKING_HELP
+  status      String // STILL_PLACED | COMPLETED | SEEKING_HELP
   notes       String?
   needsHelp   Boolean  @default(false)
   createdAt   DateTime @default(now())
 }
 
 model RemovalRequest {
-  id              String   @id @default(cuid())
-  targetType      String   // PLACEMENT | ALUMNUS
-  targetId        String
-  reason          String
-  requesterEmail  String?
-  isResolved      Boolean  @default(false)
-  createdAt       DateTime @default(now())
+  id             String   @id @default(cuid())
+  targetType     String // PLACEMENT | ALUMNUS
+  targetId       String
+  reason         String
+  requesterEmail String?
+  isResolved     Boolean  @default(false)
+  createdAt      DateTime @default(now())
 }
 
 model PulsePoll {
   id        String      @id @default(cuid())
   question  String
-  options   String      // Stored as JSON string array e.g. '["Option A", "Option B"]'
+  options   String // Stored as JSON string array e.g. '["Option A", "Option B"]'
   isActive  Boolean     @default(true)
   createdAt DateTime    @default(now())
   updatedAt DateTime    @updatedAt
@@ -154,4 +155,620 @@ model PulseVote {
   option    String
   createdAt DateTime  @default(now())
   poll      PulsePoll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+}
+
+model AuditLog {
+  sequence  Int      @id @default(autoincrement())
+  payload   String
+  prevHash  String   @unique
+  hash      String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([sequence])
+}
+
+model ApprovalRequest {
+  id                String             @id @default(cuid())
+  type              String
+  payload           String
+  makerOffice       String
+  requiredApprovers String
+  approvalMode      String             @default("ANY")
+  status            String             @default("PENDING")
+  reason            String?
+  expiresAt         DateTime
+  decidedBy         String?
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
+  decisions         ApprovalDecision[]
+
+  @@index([status, expiresAt])
+}
+
+model ApprovalDecision {
+  id                String          @id @default(cuid())
+  approvalRequestId String
+  office            String
+  actingFor         String?
+  decision          String
+  reason            String?
+  createdAt         DateTime        @default(now())
+  approvalRequest   ApprovalRequest @relation(fields: [approvalRequestId], references: [id], onDelete: Cascade)
+
+  @@unique([approvalRequestId, office])
+}
+
+model Notification {
+  id          String    @id @default(cuid())
+  office      String
+  title       String
+  message     String
+  link        String?
+  kind        String    @default("INFO")
+  scheduledAt DateTime?
+  sentAt      DateTime?
+  readAt      DateTime?
+  createdAt   DateTime  @default(now())
+
+  @@index([office, createdAt])
+  @@index([scheduledAt, sentAt])
+}
+
+model Task {
+  id               String    @id @default(cuid())
+  title            String
+  description      String
+  assignedByOffice String
+  assignedToOffice String
+  dueDate          DateTime?
+  status           String    @default("OPEN")
+  linkedMeetingId  String?
+  linkedActionItem String?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  @@index([assignedToOffice, status, dueDate])
+}
+
+model Meeting {
+  id             String        @id @default(cuid())
+  title          String
+  date           DateTime
+  venue          String
+  agenda         String
+  mandatory      Boolean       @default(false)
+  createdBy      String
+  reminderAt     DateTime?
+  reminderSentAt DateTime?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  rsvps          MeetingRSVP[]
+
+  @@index([date])
+}
+
+model MeetingRSVP {
+  id        String   @id @default(cuid())
+  meetingId String
+  office    String
+  response  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  meeting   Meeting  @relation(fields: [meetingId], references: [id], onDelete: Cascade)
+
+  @@unique([meetingId, office])
+  @@index([office, response])
+}
+
+model Delegation {
+  id            String   @id @default(cuid())
+  grantingOffice String
+  delegateOffice String
+  startsAt      DateTime
+  endsAt        DateTime
+  grantedBy     String
+  status        String   @default("SCHEDULED")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([grantingOffice, delegateOffice, startsAt, endsAt, status])
+}
+
+model Committee {
+  id          String            @id @default(cuid())
+  name        String
+  description String
+  createdBy   String
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  members     CommitteeMember[]
+
+  @@unique([name])
+}
+
+model CommitteeMember {
+  id          String    @id @default(cuid())
+  committeeId String
+  office      String
+  createdAt   DateTime  @default(now())
+  committee   Committee @relation(fields: [committeeId], references: [id], onDelete: Cascade)
+
+  @@unique([committeeId, office])
+}
+
+model Motion {
+  id            String        @id @default(cuid())
+  meetingId     String
+  title         String
+  description   String
+  quorumPercent Int           @default(50)
+  status        String        @default("OPEN")
+  result        String?
+  createdBy     String
+  createdAt     DateTime      @default(now())
+  closedAt      DateTime?
+  votes         MotionVote[]
+
+  @@index([meetingId, status])
+}
+
+model MotionVote {
+  id        String   @id @default(cuid())
+  motionId  String
+  office    String
+  vote      String
+  createdAt DateTime @default(now())
+  motion    Motion   @relation(fields: [motionId], references: [id], onDelete: Cascade)
+
+  @@unique([motionId, office])
+}
+
+model MeetingMinutes {
+  id          String   @id @default(cuid())
+  meetingId   String   @unique
+  content     String
+  attendance  String
+  agendaItems String
+  status      String   @default("DRAFT")
+  draftedBy   String
+  approvedBy  String?
+  submittedAt DateTime?
+  approvedAt  DateTime?
+  lockedAt    DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model DecisionDigest {
+  id          String   @id @default(cuid())
+  minutesId   String   @unique
+  meetingId   String
+  title       String
+  content     String
+  publishAt   DateTime
+  publishedAt DateTime?
+  createdAt   DateTime @default(now())
+
+  @@index([publishAt, publishedAt])
+}
+
+model OversightQuery {
+  id            String   @id @default(cuid())
+  targetOffice  String
+  createdBy     String
+  kind          String
+  subject       String
+  message       String
+  response      String?
+  responseAt    DateTime?
+  status        String   @default("OPEN")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([targetOffice, status, createdAt])
+}
+
+model ExecutiveReport {
+  id          String   @id @default(cuid())
+  office      String
+  title       String
+  summary     String
+  periodStart DateTime
+  periodEnd   DateTime
+  status      String   @default("SUBMITTED")
+  submittedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+
+  @@index([office, submittedAt])
+}
+
+model ScorecardPromise {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  baseline    String?
+  target      String?
+  delivered   String?
+  isPublished Boolean  @default(false)
+  updatedBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model OfficeDocument {
+  id          String                   @id @default(cuid())
+  title       String
+  description String
+  folder      String
+  session     String
+  permission  String                   @default("EXECUTIVES")
+  tags        String                   @default("[]")
+  filePath    String?
+  driveLink   String?
+  createdBy   String
+  createdAt   DateTime                 @default(now())
+  updatedAt   DateTime                 @updatedAt
+  versions    OfficeDocumentVersion[]
+
+  @@index([folder, session, permission])
+}
+
+model OfficeDocumentVersion {
+  id         String         @id @default(cuid())
+  documentId String
+  version    Int
+  filePath   String?
+  driveLink  String?
+  createdBy  String
+  createdAt  DateTime       @default(now())
+  document   OfficeDocument @relation(fields: [documentId], references: [id], onDelete: Cascade)
+
+  @@unique([documentId, version])
+}
+
+model OfficialLetter {
+  id          String   @id @default(cuid())
+  reference   String   @unique
+  recipient   String
+  subject     String
+  body        String
+  status      String   @default("DRAFT")
+  createdBy   String
+  approvedBy  String?
+  createdAt   DateTime @default(now())
+  approvedAt  DateTime?
+
+  @@index([createdAt])
+}
+
+model LetterSequence {
+  year      Int      @id
+  nextValue Int      @default(1)
+  updatedAt DateTime @updatedAt
+}
+
+model AnnouncementDraft {
+  id               String   @id @default(cuid())
+  title            String
+  body             String
+  category         String
+  pinned           Boolean  @default(false)
+  official         Boolean  @default(false)
+  status           String   @default("DRAFT")
+  createdBy        String
+  approvalRequestId String? @unique
+  publishedAt      DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([createdBy, status, createdAt])
+}
+
+model ContentCalendarItem {
+  id          String   @id @default(cuid())
+  title       String
+  channel     String
+  scheduledAt DateTime
+  notes       String   @default("")
+  status      String   @default("PLANNED")
+  createdBy   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([scheduledAt, status])
+}
+
+model MediaAsset {
+  id          String   @id @default(cuid())
+  title       String
+  description String   @default("")
+  filePath    String
+  fileName    String
+  mimeType    String
+  size        Int
+  createdBy   String
+  createdAt   DateTime @default(now())
+}
+
+model PlatformRequest {
+  id          String   @id @default(cuid())
+  kind        String
+  title       String
+  description String
+  status      String   @default("OPEN")
+  approvalRequestId String? @unique
+  requesterOffice String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model DeveloperVolunteer {
+  id           String   @id @default(cuid())
+  name         String
+  skills       String
+  availability String
+  assignedTask String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model ReleaseNote {
+  id        String   @id @default(cuid())
+  version   String
+  title     String
+  notes     String
+  published Boolean  @default(false)
+  createdBy String
+  createdAt DateTime @default(now())
+}
+
+model SocialEvent {
+  id                String   @id @default(cuid())
+  title             String
+  description       String
+  venue             String
+  startsAt          DateTime
+  endsAt            DateTime
+  budgetRequest     Float    @default(0)
+  checklist         String   @default("[]")
+  status            String   @default("PENDING")
+  approvalRequestId String?  @unique
+  calendarEventId   String?  @unique
+  createdBy         String
+  report            String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  volunteers        EventVolunteer[]
+  rsvps             EventRSVP[]
+  feedback          EventFeedback[]
+
+  @@index([status, startsAt])
+}
+
+model EventVolunteer {
+  id             String     @id @default(cuid())
+  eventId        String
+  studentName    String
+  email          String?
+  task           String
+  hours          Float      @default(0)
+  hoursOptIn     Boolean    @default(false)
+  createdAt      DateTime   @default(now())
+  event          SocialEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, studentName])
+  @@index([eventId, createdAt])
+}
+
+model EventRSVP {
+  id          String     @id @default(cuid())
+  eventId     String
+  studentName String?
+  response    String
+  createdAt   DateTime   @default(now())
+  event       SocialEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@unique([eventId, studentName])
+  @@index([eventId, response])
+}
+
+model EventFeedback {
+  id        String     @id @default(cuid())
+  eventId   String
+  rating    Int
+  feedback  String
+  createdAt DateTime   @default(now())
+  event     SocialEvent @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@index([eventId, createdAt])
+}
+
+model DuesMember {
+  id          String    @id @default(cuid())
+  memberCode  String    @unique
+  displayName String    @default("Mock member")
+  level       String
+  status      String    @default("UNPAID")
+  amountPaid  Float     @default(0)
+  receiptRef  String?
+  paidAt      DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model DuesReminderDraft {
+  id        String   @id @default(cuid())
+  title     String
+  body      String
+  createdBy String
+  createdAt DateTime @default(now())
+}
+
+model FinanceQuery {
+  id          String   @id @default(cuid())
+  trackingId  String   @unique
+  subject     String
+  message     String
+  isAnonymous Boolean  @default(false)
+  senderName  String?
+  senderEmail String?
+  status      String   @default("OPEN")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model LedgerEntry {
+  id          String   @id @default(cuid())
+  kind        String
+  title       String
+  office      String
+  event       String?
+  term        String   @default("CURRENT")
+  amount      Float
+  receiptRef  String?
+  recordedBy  String
+  createdAt   DateTime @default(now())
+
+  @@index([office, createdAt])
+  @@index([event, createdAt])
+}
+
+model BudgetPlan {
+  id        String   @id @default(cuid())
+  scopeType String
+  scopeName String
+  amount    Float
+  term      String
+  createdBy String
+  createdAt DateTime @default(now())
+
+  @@unique([scopeType, scopeName, term])
+}
+
+model TreasuryReceipt {
+  id         String   @id @default(cuid())
+  filePath   String
+  fileName   String
+  mimeType   String
+  size       Int
+  uploadedBy String
+  createdAt  DateTime @default(now())
+}
+
+model ExpenditureRequest {
+  id                String   @id @default(cuid())
+  title             String
+  purpose           String
+  office            String
+  event             String?
+  amount            Float
+  term              String   @default("CURRENT")
+  requestedBy       String
+  status            String   @default("PENDING_TREASURER")
+  approvalRequestId String?  @unique
+  receiptRef        String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model WelfareCase {
+  id          String   @id @default(cuid())
+  trackingId  String   @unique
+  subject     String
+  message     String
+  isAnonymous Boolean  @default(false)
+  senderName  String?
+  senderEmail String?
+  status      String   @default("OPEN")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
+
+model WelfareReferral {
+  id          String   @id @default(cuid())
+  name        String
+  service     String
+  contact     String
+  description String
+  createdAt   DateTime @default(now())
+}
+
+model WelfareDrive {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  startsAt    DateTime
+  endsAt      DateTime
+  status      String   @default("PLANNED")
+  createdAt   DateTime @default(now())
+}
+
+model WellbeingResource {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  link        String?
+  createdAt   DateTime @default(now())
+}
+
+model SportsTeam {
+  id          String   @id @default(cuid())
+  name        String
+  category    String
+  roster      String   @default("[]")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SportsFixture {
+  id        String   @id @default(cuid())
+  team      String
+  opponent  String
+  venue     String
+  startsAt  DateTime
+  result    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model TrainingSession {
+  id        String   @id @default(cuid())
+  team      String
+  venue     String
+  startsAt  DateTime
+  notes     String
+  createdAt DateTime @default(now())
+}
+
+model EquipmentItem {
+  id        String   @id @default(cuid())
+  name      String
+  quantity  Int      @default(0)
+  condition String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model SportsSignup {
+  id        String   @id @default(cuid())
+  name      String
+  sport     String
+  level     String
+  createdAt DateTime @default(now())
+}
+
+model SportsAchievement {
+  id        String   @id @default(cuid())
+  title     String
+  details   String
+  achievedAt DateTime
+  createdAt DateTime @default(now())
 }

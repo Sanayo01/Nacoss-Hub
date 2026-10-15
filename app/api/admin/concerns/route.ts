@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { isAdminAuthenticated } from "@/lib/admin-auth";
+import { gateOfficeCapability } from "@/lib/office-access";
 import { getAdminConcerns, updateConcernStatusAndResponse } from "@/lib/db";
 import { sanitizeText } from "@/lib/utils";
+import { appendAuditLog } from "@/lib/audit";
 
 const updateStatusSchema = z.object({
   concernId: z.string().min(1, "Concern ID is required"),
@@ -12,13 +13,11 @@ const updateStatusSchema = z.object({
 });
 
 export async function GET(req: NextRequest) {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const gate = await gateOfficeCapability("concerns.view");
+  if ("response" in gate) return gate.response;
 
   const { searchParams } = new URL(req.url);
-  const office = searchParams.get("office") || undefined;
+  const office = gate.office;
   const status = searchParams.get("status") || undefined;
 
   try {
@@ -34,10 +33,8 @@ export async function GET(req: NextRequest) {
 }
 
 export async function PATCH(req: NextRequest) {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const gate = await gateOfficeCapability("concerns.manage");
+  if ("response" in gate) return gate.response;
 
   try {
     const body = await req.json();
@@ -56,6 +53,14 @@ export async function PATCH(req: NextRequest) {
       status,
       publicResponse: publicResponse ? sanitizeText(publicResponse) : publicResponse,
       updateNote: sanitizeText(updateNote),
+    });
+    await appendAuditLog({
+      action: "CONCERN_STATUS_UPDATED",
+      office: gate.office,
+      entityType: "Concern",
+      entityId: concernId,
+      details: { status, isAnonymous: result.updatedConcern.isAnonymous },
+      occurredAt: new Date().toISOString(),
     });
 
     return NextResponse.json({

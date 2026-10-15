@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { EXECUTIVES_LIST } from "@/config/executives";
 
 const REAL_TEST_EMAILS: Record<string, string> = {
   "general-secretary": "sanayodeji087@gmail.com",
@@ -76,7 +77,7 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
         </a>
       </div>
       <p style="color: #64748B; font-size: 12px; text-align: center; margin-top: 24px;">
-        NACOS UNILAG Hub &bull; Campaign Prototype #AyodejiForGenSec
+        NACOS UNILAG Hub &bull; Student-to-Executive Platform
       </p>
     </div>
   `;
@@ -127,6 +128,31 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
       tag: "Student Confirmation",
     });
   }
+}
+
+export async function sendOfficeNotification(office: string, title: string, message: string) {
+  const executive = EXECUTIVES_LIST.find((item) => item.officeSlug === office);
+  if (!executive) throw new Error(`Cannot notify unknown office: ${office}`);
+  const isTestMode = process.env.TEST_MODE !== "false";
+  const recipient = isTestMode && executive.officeEmail.endsWith("@nacos-unilag.example")
+    ? DEFAULT_GEN_SEC_EMAIL
+    : executive.officeEmail;
+  await dispatchEmail({
+    to: recipient,
+    subject: `[NACOS Hub] ${title}`,
+    html: `<div style="font-family:Arial,sans-serif"><h2>${escapeHtml(title)}</h2><p>${escapeHtml(message)}</p></div>`,
+    tag: "Office Notification",
+  });
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character] ?? character);
 }
 
 async function dispatchEmail({

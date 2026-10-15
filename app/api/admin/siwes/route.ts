@@ -1,23 +1,31 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isAdminAuthenticated } from "@/lib/admin-auth";
+import { z } from "zod";
+import { gateOfficeCapability } from "@/lib/office-access";
 import {
   getAllSiwesPlacements,
   getAllAlumni,
   getSiwesCheckIns,
   getRemovalRequests,
-  updateSiwesPlacementApproval,
-  updateAlumnusApproval,
-  deleteSiwesPlacement,
-  deleteAlumnus,
-  updateRemovalRequestResolved,
 } from "@/lib/db";
+import { createApprovalRequest } from "@/lib/approvals";
+
+const updateSchema = z.discriminatedUnion("action", [
+  z.object({
+    action: z.literal("toggle-approval"),
+    type: z.enum(["placement", "alumni"]),
+    id: z.string().min(1),
+    isApproved: z.boolean(),
+  }),
+  z.object({
+    action: z.literal("resolve-removal"),
+    id: z.string().min(1),
+    isResolved: z.boolean(),
+  }),
+]);
 
 export async function GET() {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
-
+  const gate = await gateOfficeCapability("reports.view");
+  if ("response" in gate) return gate.response;
   try {
     const [placements, alumni, checkIns, removalRequests] = await Promise.all([
       getAllSiwesPlacements(),
@@ -25,86 +33,57 @@ export async function GET() {
       getSiwesCheckIns(),
       getRemovalRequests(),
     ]);
-
-    return NextResponse.json({
-      success: true,
-      data: {
-        placements,
-        alumni,
-        checkIns,
-        removalRequests,
-      },
-    });
+    return NextResponse.json({ success: true, data: { placements, alumni, checkIns, removalRequests } });
   } catch (error) {
     console.error("GET /api/admin/siwes error:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to load moderation data" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: "Failed to load moderation data" }, { status: 500 });
   }
 }
 
 export async function PATCH(req: NextRequest) {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
-
+  const gate = await gateOfficeCapability("serious.submit");
+  if ("response" in gate) return gate.response;
   try {
-    const body = await req.json();
-    const { action, type, id, isApproved, isResolved } = body;
-
-    if (action === "toggle-approval") {
-      if (type === "placement") {
-        await updateSiwesPlacementApproval(id, Boolean(isApproved));
-      } else if (type === "alumni") {
-        await updateAlumnusApproval(id, Boolean(isApproved));
-      }
-      return NextResponse.json({ success: true, message: "Approval status updated" });
+    const parsed = updateSchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return NextResponse.json({ success: false, error: parsed.error.issues[0].message }, { status: 400 });
     }
-
-    if (action === "resolve-removal") {
-      await updateRemovalRequestResolved(id, Boolean(isResolved));
-      return NextResponse.json({ success: true, message: "Removal request updated" });
-    }
-
-    return NextResponse.json({ success: false, error: "Unknown action" }, { status: 400 });
+    const request = parsed.data.action === "resolve-removal"
+      ? await createApprovalRequest({
+          type: "REMOVAL_REQUEST_RESOLUTION",
+          payload: { id: parsed.data.id, isResolved: parsed.data.isResolved, title: "Resolve SIWES/alumni removal request" },
+          makerOffice: gate.office,
+        })
+      : await createApprovalRequest({
+          type: parsed.data.type === "placement" ? "SIWES_PLACEMENT_APPROVAL" : "ALUMNUS_APPROVAL",
+          payload: { id: parsed.data.id, isApproved: parsed.data.isApproved, title: "Moderate SIWES/alumni record" },
+          makerOffice: gate.office,
+        });
+    return NextResponse.json({ success: true, message: "Action submitted for approval", data: request }, { status: 202 });
   } catch (error) {
     console.error("PATCH /api/admin/siwes error:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to perform moderation action" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: "Failed to submit moderation action" }, { status: 500 });
   }
 }
 
 export async function DELETE(req: NextRequest) {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
+  const gate = await gateOfficeCapability("serious.submit");
+  if ("response" in gate) return gate.response;
+  const { searchParams } = new URL(req.url);
+  const type = searchParams.get("type");
+  const id = searchParams.get("id");
+  if (!id || (type !== "placement" && type !== "alumni")) {
+    return NextResponse.json({ success: false, error: "A valid type and ID are required" }, { status: 400 });
   }
-
   try {
-    const { searchParams } = new URL(req.url);
-    const type = searchParams.get("type");
-    const id = searchParams.get("id");
-
-    if (!type || !id) {
-      return NextResponse.json({ success: false, error: "Type and ID required" }, { status: 400 });
-    }
-
-    if (type === "placement") {
-      await deleteSiwesPlacement(id);
-    } else if (type === "alumni") {
-      await deleteAlumnus(id);
-    }
-
-    return NextResponse.json({ success: true, message: "Record deleted successfully" });
+    const request = await createApprovalRequest({
+      type: type === "placement" ? "SIWES_PLACEMENT_DELETE" : "ALUMNUS_DELETE",
+      payload: { id, title: `Delete ${type} record` },
+      makerOffice: gate.office,
+    });
+    return NextResponse.json({ success: true, message: "Deletion submitted for approval", data: request }, { status: 202 });
   } catch (error) {
     console.error("DELETE /api/admin/siwes error:", error);
-    return NextResponse.json(
-      { success: false, error: "Failed to delete record" },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: false, error: "Failed to request deletion" }, { status: 500 });
   }
 }

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAnnouncementById } from "@/lib/db";
+import { getAnnouncementById, incrementAnnouncementView } from "@/lib/db";
 
 export async function GET(
   req: NextRequest,
@@ -13,7 +13,8 @@ export async function GET(
         { status: 404 }
       );
     }
-    return NextResponse.json({ success: true, data: announcement });
+    const viewed = await incrementAnnouncementView(params.id);
+    return NextResponse.json({ success: true, data: viewed });
   } catch (error) {
     console.error("GET /api/announcements/[id] error:", error);
     return NextResponse.json(

@@ -61,13 +61,13 @@ export default function AnnouncementsPage() {
   });
 
   const handleCopyWhatsApp = (ann: Announcement) => {
-    const text = `🚨 *NACOS UNILAG OFFICIAL ANNOUNCEMENT*\n\n📌 *${ann.title}*\n\n${ann.body}\n\n🔗 View on NACOS Hub: ${window.location.origin}/announcements/${ann.id}\n\n#NACOSUNILAG #AyodejiForGenSec`;
+    const text = `🚨 *NACOS UNILAG OFFICIAL ANNOUNCEMENT*\n\n📌 *${ann.title}*\n\n${ann.body}\n\n🔗 View on NACOS Hub: ${window.location.origin}/announcements/${ann.id}\n\n#NACOSUNILAG`;
     navigator.clipboard.writeText(text);
     triggerCopied("whatsapp");
   };
 
   const handleCopyIG = (ann: Announcement) => {
-    const text = `📢 NACOS UNILAG: ${ann.title}\n\n${ann.body.substring(0, 180)}...\n\nFull details on NACOS Hub!\n#NACOSUNILAG #AyodejiForGenSec #KeepItRunning`;
+    const text = `📢 NACOS UNILAG: ${ann.title}\n\n${ann.body.substring(0, 180)}...\n\nFull details on NACOS Hub!\n#NACOSUNILAG`;
     navigator.clipboard.writeText(text);
     triggerCopied("ig");
   };

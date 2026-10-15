@@ -36,6 +36,18 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
       icon: Calendar,
     },
     {
+      title: "Events & Volunteering",
+      desc: "Browse approved events, RSVP, and volunteer",
+      href: "/events",
+      icon: Calendar,
+    },
+    {
+      title: "Platform Feedback",
+      desc: "Report a bug or request a NACOS Hub feature",
+      href: "/platform",
+      icon: Activity,
+    },
+    {
       title: "Document Vault",
       desc: "Official letters, course guides, forms & templates",
       href: "/documents",
@@ -133,10 +145,10 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
           })}
         </div>
 
-        {/* Footer campaign tag */}
+        {/* Neutral platform footer */}
         <div className="mt-4 pt-4 border-t border-navy-border text-center">
           <p className="text-[11px] text-navy-subtle">
-            #AyodejiForGenSec &bull; #KeepItRunning
+            NACOS UNILAG · Student-to-Executive Platform
           </p>
         </div>
       </div>

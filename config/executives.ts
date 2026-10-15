@@ -66,8 +66,8 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "general-secretary",
     position: "General Secretary",
-    name: "Ayodeji Sanusi",
-    officeEmail: "sanayodeji087@gmail.com", // REAL TESTING ADDRESS (#AyodejiForGenSec)
+    name: "Name to be confirmed",
+    officeEmail: "sanayodeji087@gmail.com", // REAL TESTING ADDRESS
     goToThemFor: "[Draft - to be confirmed by executive] Official departmental correspondence, Secretariat clearance records, HOD letters, and NACOS Hub concern tracking.",
     handles: [
       "Secretariat operations and official meeting documentation",

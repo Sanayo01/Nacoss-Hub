@@ -43,13 +43,13 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Ayodeji Sanusi",
+      name: "Name to be confirmed",
       position: "General Secretary",
       officeSlug: "general-secretary",
       photoUrl: null,
       bio: "Managing departmental administrative operations, official correspondence, constitutional records, and student concern tracking.",
       goToThemFor: "Official departmental letters, general inquiries, status tracking, and executive accountability.",
-      officeEmail: "sanayodeji087@gmail.com", // REAL EMAIL FOR TESTING
+      officeEmail: "sanayodeji087@gmail.com", // REAL TEST EMAIL
       isActive: true,
     },
     {
@@ -695,6 +695,21 @@ async function main() {
     }
   }
   console.log("Seeded 3 Sample Concerns with audit updates.");
+
+  const demoDuesMembers = [
+    { memberCode: "DEMO-1001", displayName: "Mock Member One", level: "100L", status: "PAID", amountPaid: 2500, receiptRef: "DEMO-RCPT-01", paidAt: new Date() },
+    { memberCode: "DEMO-2001", displayName: "Mock Member Two", level: "200L", status: "UNPAID", amountPaid: 0, receiptRef: null, paidAt: null },
+    { memberCode: "DEMO-3001", displayName: "Mock Member Three", level: "300L", status: "PAID", amountPaid: 2500, receiptRef: "DEMO-RCPT-02", paidAt: new Date() },
+    { memberCode: "DEMO-4001", displayName: "Mock Member Four", level: "400L", status: "UNPAID", amountPaid: 0, receiptRef: null, paidAt: null },
+  ];
+  for (const member of demoDuesMembers) {
+    await prisma.duesMember.upsert({
+      where: { memberCode: member.memberCode },
+      create: member,
+      update: member,
+    });
+  }
+  console.log("Seeded four mock dues records.");
   console.log("Database Seeding Completed Successfully.");
 }
 

@@ -113,7 +113,7 @@ export default function HomePage() {
         <div className="relative z-10 max-w-3xl space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full bg-mint/10 border border-mint/20 px-3 py-1 text-xs font-semibold text-mint">
             <Sparkles className="h-3.5 w-3.5" />
-            NACOS UNILAG Campaign Prototype #AyodejiForGenSec
+            NACOS UNILAG Executive Hub
           </div>
 
           <h1 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-navy-heading leading-tight">
@@ -121,7 +121,7 @@ export default function HomePage() {
           </h1>
 
           <p className="text-sm md:text-lg text-navy-body font-normal leading-relaxed">
-            Records that don't disappear. An exec that actually responds. Direct contact, routed concerns, transparent audit timelines, and official departmental feeds.
+            Records stay visible. Executives respond. Direct contact, routed concerns, transparent audit timelines, and official departmental feeds.
           </p>
 
           {/* TWO MAIN CTA BUTTONS & TRACKING INPUT */}

@@ -5,6 +5,7 @@ import { checkRateLimit } from "@/lib/rate-limit";
 import { generateTrackingId, sanitizeText } from "@/lib/utils";
 import { getTargetOfficeSlug } from "@/config/offices";
 import { sendConcernEmails } from "@/lib/mailer";
+import { appendAuditLog } from "@/lib/audit";
 
 const createConcernSchema = z.object({
   category: z.string().min(1, "Category is required"),
@@ -77,6 +78,14 @@ export async function POST(req: NextRequest) {
       level: data.level || null,
       targetOfficeSlug: selectedOfficeSlug,
     });
+    await appendAuditLog({
+      action: "CONCERN_SUBMITTED",
+      office: "system",
+      entityType: "Concern",
+      entityId: concern.id,
+      details: { trackingId, category: data.category, targetOffice: selectedOfficeSlug, isAnonymous: data.isAnonymous },
+      occurredAt: new Date().toISOString(),
+    });
 
     // 7. Dispatch Emails asynchronously
     try {
@@ -86,8 +95,8 @@ export async function POST(req: NextRequest) {
         subject: cleanSubject,
         message: cleanMessage,
         isAnonymous: data.isAnonymous,
-        senderName: cleanName,
-        senderEmail: cleanEmail,
+        senderName: data.isAnonymous ? null : cleanName,
+        senderEmail: data.isAnonymous ? null : cleanEmail,
         level: data.level,
         targetOfficeSlug: selectedOfficeSlug,
         targetOfficeName,

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { isAdminAuthenticated } from "@/lib/admin-auth";
-import { createAnnouncement } from "@/lib/db";
+import { gateOfficeCapability } from "@/lib/office-access";
+import { createApprovalRequest } from "@/lib/approvals";
 import { sanitizeText } from "@/lib/utils";
 
 const announcementSchema = z.object({
@@ -13,10 +13,8 @@ const announcementSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  const isAuth = await isAdminAuthenticated();
-  if (!isAuth) {
-    return NextResponse.json({ success: false, error: "Unauthorized" }, { status: 401 });
-  }
+  const gate = await gateOfficeCapability("announcements.publish");
+  if ("response" in gate) return gate.response;
 
   try {
     const body = await req.json();
@@ -32,18 +30,21 @@ export async function POST(req: NextRequest) {
     const cleanTitle = sanitizeText(data.title);
     const cleanBody = sanitizeText(data.body);
 
-    const announcement = await createAnnouncement({
-      title: cleanTitle,
-      body: cleanBody,
-      category: data.category,
-      pinned: data.pinned,
-      authorOfficeSlug: data.authorOfficeSlug,
+    const request = await createApprovalRequest({
+      type: data.category === "Urgent" ? "URGENT_ANNOUNCEMENT" : "OFFICIAL_ANNOUNCEMENT",
+      payload: {
+        title: cleanTitle,
+        body: cleanBody,
+        category: data.category,
+        pinned: data.pinned,
+      },
+      makerOffice: gate.office,
     });
 
     return NextResponse.json({
       success: true,
-      message: "Announcement created successfully",
-      data: announcement,
+      message: "Announcement submitted for approval",
+      data: request,
     });
   } catch (error) {
     console.error("POST /api/admin/announcements error:", error);

@@ -1,105 +1,74 @@
-# NACOS Hub - UNILAG Student-to-Executive Communication Platform
+# NACOS Hub
 
-> **PROTOTYPE NOTICE:** This platform is an interactive prototype built to demonstrate student-to-executive communication workflows for NACOS UNILAG. All student and alumni listings are fictional placeholders with realistic Nigerian tech ecosystem examples. Real testing addresses are configured for the General Secretary (`sanayodeji087@gmail.com`) and PRO (`sanusifatih04@gmail.com`) under `TEST_MODE=true`.
+NACOS Hub is a mock-data prototype for NACOS UNILAG computing students. It demonstrates student services and executive-office workflows; it is not approved for real student data. Volunteer developers must review and rebuild production authentication, authorization, privacy, storage, and operational controls before real use.
 
----
+## Run locally
 
-## 🚀 Quick Start & Setup Commands
+Requirements: Node.js and npm.
 
-Follow these steps to run the platform locally:
-
-```bash
-# 1. Install dependencies
+```powershell
 npm install
+Copy-Item .env.example .env
+```
 
-# 2. Push Prisma schema & generate client
+Edit `.env` before starting. Set a private `ADMIN_PASSCODE`, a unique random `ADMIN_SESSION_SECRET` of at least 32 characters, `DATABASE_URL="file:./dev.db"` and `TEST_MODE=true`. Keep `.env` private and never commit it. Then run:
+
+```powershell
 npx prisma db push
-
-# 3. Seed database with executives, announcements, calendar, docs, 10 SIWES placements, 6 alumni, and sample concerns
-npm run prisma:seed
-
-# 4. Start local development server
+npx prisma generate
 npm run dev
 ```
 
-Visit the app at: **[http://localhost:3000](http://localhost:3000)**
+Open <http://localhost:3000>. Sign in at `/admin` with the locally configured passcode, select an office, and use the `/office` workspace. The login is shared demo access, not individual executive identity. Do not use it with real information.
 
----
+Useful checks:
 
-## 🔑 Environment Variables Configuration
-
-Create a `.env` file in the root folder (or copy from `.env.example`):
-
-```bash
-# Database connection (SQLite local file)
-DATABASE_URL="file:./dev.db"
-
-# Test mode: redirects placeholder office emails to General Secretary
-TEST_MODE=true
-
-# Admin Passcode for local executive prototype demonstration
-ADMIN_PASSCODE="nacos-unilag-exec-2026"
-ADMIN_SESSION_SECRET="nacos-prototype-super-secret-key-32chars"
-
-# Optional SMTP Settings (If blank, Nodemailer logs full email payload to console in dev mode)
-SMTP_HOST=""
-SMTP_PORT=587
-SMTP_USER=""
-SMTP_PASS=""
-MAIL_FROM="NACOS UNILAG Hub <noreply@nacos-unilag.org>"
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
+```powershell
+npm run lint
+npx tsc --noEmit
+npm test
 ```
 
----
+Do not run `prisma db push --force-reset` or the seed script against a database containing work you need to keep. The seed script can delete existing sample records; inspect it and back up the database first.
 
-## 🔄 Resetting and Re-seeding Data
+## Student-facing pages
 
-To clear the local SQLite database and restore clean initial demo records:
+The student prototype includes the home page, executive directory, routed concerns and tracking, calendar, events, announcements, documents, finance summary, sports, welfare resources, SIWES/alumni, platform requests, pulse polls, and handbook. Public data and submissions must remain mock/demo data.
 
-```bash
-# Clean push and reset database schema
-npx prisma db push --force-reset
+## Executive workspaces
 
-# Seed full dataset
-npm run prisma:seed
-```
+All 11 offices use the shared signed-cookie office selection and capability-gated `/office` shell:
 
----
+| Office | Example workspace |
+|---|---|
+| President | `/office/president` |
+| Vice President | `/office/vice-president` |
+| General Secretary | `/office/secretariat` |
+| Assistant General Secretary | `/office/secretariat` |
+| Financial Secretary | `/office/financial-secretary` |
+| Treasurer | `/office/treasurer` |
+| Social Secretary | `/office/social` |
+| Sports Secretary | `/office/sports` |
+| Welfare Secretary | `/office/welfare` |
+| Software Director | `/office/software` |
+| PRO | `/office/pro` |
 
-## 📱 Feature Overview
+Shared workflows include meetings and RSVPs, tasks, approvals, concerns, documents, reports, notifications, and audited state changes. President, Vice President, and General Secretary can inspect `/office/audit`. Minutes approval creates action-item tasks and a shareable Decision Digest. Delegations are time-bounded and recorded.
 
-- **Executive Directory (`/execs`)**: Searchable list of all 12 NACOS UNILAG offices with responsibilities and routing buttons.
-- **Routed Concern Submission (`/concern`)**: 3-step wizard with category auto-routing, anonymous mode, privacy shield notice, and tracking ID generation (`NH-2026-XXXX`).
-- **Audit Timeline (`/track/[trackingId]`)**: Real-time status tracker (Received → Being Handled → Resolved / Declined) with public executive response.
-- **SIWES Bridge & Alumni Directory (`/siwes`)**:
-  - Filterable directory by company, stack, and city.
-  - Placement stats strip (total placed, companies count, top stacks).
-  - "Share my SIWES placement" & "Join the alumni directory" forms with mandatory consent agreements.
-  - Monthly SIWES check-in card for students currently on internship.
-  - Removal / Edit request submission.
-  - "Who is on SIWES now" counter on the home page.
-- **Executive Admin Console (`/admin`)**:
-  - Passcode-protected with signed httpOnly cookies (`nacos-unilag-exec-2026`).
-  - Concern inbox filtered by office and status.
-  - Status updater with public executive response field and audit update logging (`ConcernUpdate`).
-  - Announcement composer with 1-click **Share kit** (formatted for WhatsApp groups and Instagram/X).
-  - Moderation queue for approving/rejecting placements, alumni, and resolving removal requests.
-  - CSV export for approved placements and alumni.
-- **Departmental Calendar (`/calendar`)**: Grouped week view, month grid, single `.ics` event download, and live subscription feed (`/api/calendar.ics`).
-- **Document Vault (`/documents`)**: Official constitution, dues clearance guides, past questions bank, and letter templates.
-- **Student Pulse (`/pulse`)**: Anonymous 1-tap poll voting with device duplicate prevention.
-- **Student Handbook (`/handbook`)**: Searchable accordion guide on departmental governance.
-- **Prototype Status Page (`/about`)**: Complete breakdown of real vs mocked features and known architectural limitations.
+Office-specific capabilities cover presidential leadership and motions; VP committees and coordination; Secretariat minutes, vault, letters, oversight, records and moderation; Financial Secretary dues and queries; Treasurer record-only ledger, budgets and expenditure approvals; Social Secretary events and opt-in volunteer hours; Sports teams and fixtures; Welfare cases/resources; Software Director requests/roster/releases; and PRO announcements/assets. Welfare case records are visible only to the Welfare Secretary and President. Anonymous sender identity is discarded and excluded from office views.
 
----
+## Approvals, finance, audit and files
 
-## 🏛️ Executive Routing Map
+Serious actions use `config/approvals.ts`. Some actions require two different offices, including technical role changes and full student-data exports. Expenditure requests are record-keeping only: the Treasurer reviews; amounts above the configured `TREASURER_SPENDING_APPROVAL_LIMIT` (default 50,000) also require President approval. No payment processor or money movement is provided.
 
-Student concerns submitted on the Hub are routed as follows:
-- **Academics** → Director of Academics
-- **Welfare** → Welfare Director
-- **Events** → Social Director
-- **Finance/Dues** → Financial Secretary
-- **Software/Tech** → Director of Software
-- **Media/Announcements** → Public Relations Officer (PRO)
-- **General/Other** → General Secretary
+State-changing operations append to an SHA-256-linked audit chain; `/office/audit` verifies the chain. The design prevents application update/delete paths but is not a substitute for a tamper-resistant external log store.
+
+Prototype uploads use local ignored `storage/` folders. They are not backed up or suitable for confidential/real records. WhatsApp content is copy-ready only; there is no auto-posting. PDF output uses browser print-to-PDF, not cryptographically signed documents.
+
+Public POST rate limiting is in-memory and resets on restart; it is not distributed across instances. `TEST_MODE` defaults to safe redirection for configured mock office addresses. Do not disable it without reviewing the mailer configuration.
+
+## Project documentation
+
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — data flow, offices, capabilities, approvals and audit.
+- [ROADMAP.md](./ROADMAP.md) — volunteer-sized follow-up tasks.
+- [SECURITY-TODO.md](./SECURITY-TODO.md) — checks required before real data.

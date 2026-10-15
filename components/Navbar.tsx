@@ -33,6 +33,21 @@ export default function Navbar() {
           >
             Status
           </Link>
+          <Link href="/events" className="px-3 py-2 text-xs font-semibold text-navy-body hover:text-mint transition-colors">
+            Events
+          </Link>
+          <Link href="/platform" className="px-3 py-2 text-xs font-semibold text-navy-body hover:text-mint transition-colors">
+            Platform feedback
+          </Link>
+          <Link href="/finance" className="px-3 py-2 text-xs font-semibold text-navy-body hover:text-mint transition-colors">
+            Finance
+          </Link>
+          <Link href="/sports" className="px-3 py-2 text-xs font-semibold text-navy-body hover:text-mint transition-colors">
+            Sports
+          </Link>
+          <Link href="/welfare" className="px-3 py-2 text-xs font-semibold text-navy-body hover:text-mint transition-colors">
+            Wellbeing
+          </Link>
           <Link
             href="/track"
             className="px-4 py-2 text-xs font-semibold text-navy-heading hover:text-mint rounded-xl border border-navy-border bg-navy-card hover:bg-navy-cardHover transition-colors min-h-touch flex items-center"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import BottomNav from "@/components/BottomNav";
@@ -16,6 +17,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const [isMoreOpen, setIsMoreOpen] = useState(false);
+  const pathname = usePathname();
+  const isExecutiveWorkspace = pathname.startsWith("/office") || pathname === "/admin";
 
   return (
     <html lang="en" className={`${inter.variable} dark`}>
@@ -29,7 +32,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-gradient-to-b from-navy-bgStart to-navy-bgEnd text-navy-heading antialiased font-sans flex flex-col selection:bg-mint selection:text-navy-bgStart">
         {/* Sticky Header */}
-        <Navbar />
+        {!isExecutiveWorkspace && <Navbar />}
 
         {/* Main Content Area */}
         <main className="flex-1 w-full max-w-6xl mx-auto px-4 py-6">
@@ -37,13 +40,13 @@ export default function RootLayout({
         </main>
 
         {/* Campaign Footer */}
-        <Footer />
+        {!isExecutiveWorkspace && <Footer />}
 
         {/* Mobile Bottom Navigation Bar */}
-        <BottomNav onOpenMore={() => setIsMoreOpen(true)} />
+        {!isExecutiveWorkspace && <BottomNav onOpenMore={() => setIsMoreOpen(true)} />}
 
         {/* Mobile More Sheet Drawer */}
-        <MoreSheet isOpen={isMoreOpen} onClose={() => setIsMoreOpen(false)} />
+        {!isExecutiveWorkspace && <MoreSheet isOpen={isMoreOpen} onClose={() => setIsMoreOpen(false)} />}
       </body>
     </html>
   );

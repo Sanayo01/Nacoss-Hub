@@ -100,6 +100,13 @@ export async function getAnnouncementById(id: string) {
   });
 }
 
+export async function incrementAnnouncementView(id: string) {
+  return db.announcement.update({
+    where: { id },
+    data: { viewCount: { increment: 1 } },
+  });
+}
+
 // Calendar Events Queries
 export async function getCalendarEvents() {
   return db.calendarEvent.findMany({
@@ -292,7 +299,7 @@ export async function getAdminConcerns(filter?: { office?: string; status?: stri
     where.status = filter.status;
   }
 
-  return db.concern.findMany({
+  const concerns = await db.concern.findMany({
     where,
     include: {
       updates: {
@@ -301,6 +308,9 @@ export async function getAdminConcerns(filter?: { office?: string; status?: stri
     },
     orderBy: { createdAt: "desc" },
   });
+  return concerns.map((concern) => concern.isAnonymous
+    ? { ...concern, senderName: null, senderEmail: null }
+    : concern);
 }
 
 export async function updateConcernStatusAndResponse(data: {
@@ -390,4 +400,3 @@ export async function getPlatformStats() {
     activeSiwesCount,
   };
 }
-
