@@ -1,0 +1,157 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Executive {
+  id           String   @id @default(cuid())
+  name         String   @default("Name to be confirmed")
+  position     String
+  officeSlug   String   @unique
+  photoUrl     String?
+  bio          String
+  goToThemFor  String
+  handles      String   @default("[]") // Stored as JSON string array of 3-5 bullet points
+  officeEmail  String
+  isListed     Boolean  @default(true)
+  emailConsent Boolean  @default(false)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Concern {
+  id               String          @id @default(cuid())
+  trackingId       String          @unique
+  category         String
+  subject          String
+  message          String
+  isAnonymous      Boolean         @default(false)
+  senderName       String?
+  senderEmail      String?
+  level            String?
+  targetOfficeSlug String
+  status           String          @default("RECEIVED") // RECEIVED | BEING_HANDLED | RESOLVED | DECLINED
+  publicResponse   String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  updates          ConcernUpdate[]
+}
+
+model ConcernUpdate {
+  id        String   @id @default(cuid())
+  concernId String
+  status    String
+  note      String
+  createdAt DateTime @default(now())
+  concern   Concern  @relation(fields: [concernId], references: [id], onDelete: Cascade)
+}
+
+model Announcement {
+  id               String   @id @default(cuid())
+  title            String
+  body             String
+  category         String   // General | Academic | Event | Urgent | Deadline
+  pinned           Boolean  @default(false)
+  authorOfficeSlug String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model CalendarEvent {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  location    String
+  startsAt    DateTime
+  endsAt      DateTime
+  category    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Document {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  category    String   // Official Letter | Proposal | Form | Template | Handbook
+  fileUrl     String
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+}
+
+model SiwesPlacement {
+  id                String    @id @default(cuid())
+  studentName       String
+  level             String
+  company           String
+  role              String
+  techStack         String
+  city              String
+  startDate         String?
+  endDate           String?
+  howIGotIn         String?
+  tipsToApply       String
+  contactPreference String    @default("none") // none | LinkedIn only | email via the Hub
+  consentGiven      Boolean   @default(true)
+  isApproved        Boolean   @default(false)
+  createdAt         DateTime  @default(now())
+}
+
+model Alumnus {
+  id             String    @id @default(cuid())
+  name           String
+  graduationYear String
+  currentCompany String
+  currentRole    String
+  city           String
+  techStack      String
+  advice         String
+  linkedinUrl    String?
+  consentGiven   Boolean   @default(true)
+  isApproved     Boolean   @default(false)
+  createdAt      DateTime  @default(now())
+}
+
+model SiwesCheckIn {
+  id          String   @id @default(cuid())
+  studentName String
+  level       String
+  company     String
+  status      String   // STILL_PLACED | COMPLETED | SEEKING_HELP
+  notes       String?
+  needsHelp   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model RemovalRequest {
+  id              String   @id @default(cuid())
+  targetType      String   // PLACEMENT | ALUMNUS
+  targetId        String
+  reason          String
+  requesterEmail  String?
+  isResolved      Boolean  @default(false)
+  createdAt       DateTime @default(now())
+}
+
+model PulsePoll {
+  id        String      @id @default(cuid())
+  question  String
+  options   String      // Stored as JSON string array e.g. '["Option A", "Option B"]'
+  isActive  Boolean     @default(true)
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  votes     PulseVote[]
+}
+
+model PulseVote {
+  id        String    @id @default(cuid())
+  pollId    String
+  option    String
+  createdAt DateTime  @default(now())
+  poll      PulsePoll @relation(fields: [pollId], references: [id], onDelete: Cascade)
+}
