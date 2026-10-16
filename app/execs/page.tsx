@@ -131,7 +131,7 @@ export default function ExecsPage() {
         </div>
       ) : filteredExecs.length === 0 ? (
         <div className="text-center py-12 rounded-2xl border border-navy-border bg-navy-card p-8">
-          <p className="text-sm text-navy-body">No executive matches your search term "{searchQuery}".</p>
+          <p className="text-sm text-navy-body">No executive matches your search term &quot;{searchQuery}&quot;.</p>
           <button
             onClick={() => setSearchQuery("")}
             className="mt-3 text-xs text-mint hover:underline font-semibold"

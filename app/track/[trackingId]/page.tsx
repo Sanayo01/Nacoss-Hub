@@ -185,7 +185,7 @@ export default function TrackingDetailPage({
             <MessageSquare className="h-4 w-4" /> Official Executive Public Response
           </div>
           <p className="text-xs text-navy-heading leading-relaxed font-medium">
-            "{data.publicResponse}"
+            &quot;{data.publicResponse}&quot;
           </p>
         </div>
       )}

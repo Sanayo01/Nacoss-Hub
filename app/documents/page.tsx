@@ -108,7 +108,7 @@ export default function DocumentsPage() {
         </div>
       ) : filteredDocs.length === 0 ? (
         <div className="text-center py-12 rounded-2xl border border-navy-border bg-navy-card">
-          <p className="text-sm text-navy-body">No documents found matching "{searchQuery}".</p>
+          <p className="text-sm text-navy-body">No documents found matching &quot;{searchQuery}&quot;.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
