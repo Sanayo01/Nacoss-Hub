@@ -190,7 +190,7 @@ export default function PulsePage() {
                         <div className="h-4 w-4 rounded-full border border-navy-subtle flex items-center justify-center shrink-0" />
                       )}
                       {hasVoted && isSelected && (
-                        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-mint text-navy-bgStart shrink-0">
+                        <div className="flex h-5 w-5 items-center justify-center rounded-full bg-mint text-navy-onAccent shrink-0">
                           <Check className="h-3.5 w-3.5" />
                         </div>
                       )}

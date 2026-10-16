@@ -21,21 +21,21 @@ const CATEGORIES = [
   {
     title: "Academics",
     slug: "Academics",
-    office: "Director of Academics",
+    office: "Vice President",
     icon: "📚",
     desc: "Tutorial timetables, exam/test clashes, past questions, and grade issues.",
   },
   {
     title: "Welfare",
     slug: "Welfare",
-    office: "Welfare Director",
+    office: "Welfare Secretary",
     icon: "🏥",
     desc: "Lab ventilation, AC/lighting, lecture hall acoustics, and emergency aid.",
   },
   {
     title: "Events",
     slug: "Events",
-    office: "Social Director",
+    office: "Social Secretary",
     icon: "🎉",
     desc: "Hackathons, dinner tickets, freshers orientation, and gaming leagues.",
   },
@@ -49,7 +49,7 @@ const CATEGORIES = [
   {
     title: "Software/Tech",
     slug: "Software/Tech",
-    office: "Director of Software",
+    office: "Software Director",
     icon: "💻",
     desc: "Developer masterclasses, open-source projects, and lab tech support.",
   },
@@ -195,7 +195,7 @@ function ConcernForm() {
               <div
                 className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-bold border ${
                   step === s
-                    ? "bg-mint text-navy-bgStart border-mint"
+                    ? "bg-mint text-navy-onAccent border-mint"
                     : step > s
                     ? "bg-mint/20 text-mint border-mint/40"
                     : "border-navy-border text-navy-subtle"
@@ -241,7 +241,7 @@ function ConcernForm() {
                   <div className="flex items-start justify-between mb-2">
                     <span className="text-2xl">{cat.icon}</span>
                     {isSelected && (
-                      <span className="rounded-full bg-mint p-1 text-navy-bgStart">
+                      <span className="rounded-full bg-mint p-1 text-navy-onAccent">
                         <Check className="h-3 w-3" />
                       </span>
                     )}
@@ -266,7 +266,7 @@ function ConcernForm() {
             <button
               type="button"
               onClick={() => setStep(2)}
-              className="px-5 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center gap-1.5 shrink-0"
+              className="px-5 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center gap-1.5 shrink-0"
             >
               Next: Write Details <ArrowRight className="h-4 w-4" />
             </button>
@@ -297,7 +297,7 @@ function ConcernForm() {
                   onClick={() => setLevel(lvl)}
                   className={`px-4 py-2 rounded-xl text-xs font-semibold border min-h-touch ${
                     level === lvl
-                      ? "border-mint bg-mint text-navy-bgStart font-bold"
+                      ? "border-mint bg-mint text-navy-onAccent font-bold"
                       : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
                   }`}
                 >
@@ -373,7 +373,7 @@ function ConcernForm() {
                 setErrorMsg("");
                 setStep(3);
               }}
-              className="px-5 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center gap-1.5"
+              className="px-5 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center gap-1.5"
             >
               Next: Identity & Submit <ArrowRight className="h-4 w-4" />
             </button>
@@ -495,7 +495,7 @@ function ConcernForm() {
             <button
               type="submit"
               disabled={submitting}
-              className="px-6 py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-lg shadow-mint/20 min-h-touch flex items-center gap-2 disabled:opacity-50"
+              className="px-6 py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg shadow-mint/20 min-h-touch flex items-center gap-2 disabled:opacity-50"
             >
               {submitting ? (
                 <span>Submitting Concern...</span>
@@ -556,7 +556,7 @@ function ConcernForm() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
             <Link
               href={`/track/${successData.trackingId}`}
-              className="w-full sm:w-auto px-6 py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-lg min-h-touch flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-6 py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg min-h-touch flex items-center justify-center gap-2"
             >
               <Search className="h-4 w-4" /> Track Status Now
             </Link>

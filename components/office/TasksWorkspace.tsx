@@ -66,7 +66,7 @@ export default function TasksWorkspace({ initialTasks, office }: { initialTasks:
         </select>
         <input name="dueDate" type="datetime-local" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" rows={2} placeholder="Description (optional)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-        <button className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-bgStart md:col-span-2">Assign task</button>
+        <button className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-onAccent md:col-span-2">Assign task</button>
       </form>
       <div className="space-y-3">
         {tasks.map((task) => (

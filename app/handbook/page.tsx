@@ -24,11 +24,10 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
       "Financial Secretary: Collects departmental dues, issues clearance receipts, and maintains financial ledgers.",
       "Treasurer: Oversees departmental bank accounts, budget disbursements, and vendor audits.",
       "PRO: Broadcasts official announcements, handles press coverage, social channels, and media partnerships.",
-      "Social Director: Organizes hackathons social night, freshers orientation, gaming tournaments, and annual dinner.",
-      "Sports Director: Coordinates Dean's Cup team, inter-level football matches, and e-sports leagues.",
-      "Welfare Director: Manages lab facilities, AC/lighting complaints, lecture hall acoustics, and emergency student aid.",
-      "Director of Software: Leads developer masterclasses, open-source projects, code labs, and portal maintenance.",
-      "Director of Academics: Manages tutorial timetables, past question archives, exam prep bootcamps, and grade reviews.",
+      "Social Secretary: Organizes hackathons social night, freshers orientation, gaming tournaments, and annual dinner.",
+      "Sports Secretary: Coordinates Dean's Cup team, inter-level football matches, and e-sports leagues.",
+      "Welfare Secretary: Manages lab facilities, AC/lighting complaints, lecture hall acoustics, and emergency student aid.",
+      "Software Director: Leads developer masterclasses, open-source projects, code labs, and portal maintenance.",
     ],
   },
   {
@@ -59,10 +58,10 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
     question: "How do I join a NACOS executive committee or volunteer for events?",
     answer: [
       "NACOS operates four active student committees:",
-      "- Software and Dev Committee (led by Director of Software)",
+      "- Software and Dev Committee (led by the Software Director)",
       "- Media and Publicity Unit (led by PRO)",
-      "- Welfare and Student Aid Taskforce (led by Welfare Director)",
-      "- Academic and Tutorials Circle (led by Director of Academics)",
+      "- Welfare and Student Aid Taskforce (led by the Welfare Secretary)",
+      "- Academic and Tutorials Circle (coordinated by the Vice President)",
       "Applications open at the start of every semester. Check the Document Vault for the Committee Application Form.",
     ],
   },
@@ -81,7 +80,7 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
     category: "Academic Support",
     question: "Who do I contact if I have a timetable clash or grade recording issue?",
     answer: [
-      "Submit a routed concern on NACOS Hub under Academics. The Director of Academics works directly with Course Representatives and the Departmental Examination Officer to resolve practical lab clashes and grade verification requests.",
+      "Submit a routed concern on NACOS Hub under Academics. The Vice President works directly with Course Representatives and the Departmental Examination Officer to resolve practical lab clashes and grade verification requests.",
     ],
   },
 ];
@@ -185,7 +184,7 @@ export default function HandbookPage() {
         </p>
         <Link
           href="/concern"
-          className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch"
+          className="inline-flex items-center gap-2 px-6 py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch"
         >
           <Send className="h-4 w-4" /> Reach an Exec Now
         </Link>

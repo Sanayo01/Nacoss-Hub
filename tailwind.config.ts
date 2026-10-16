@@ -10,20 +10,21 @@ const config: Config = {
     extend: {
       colors: {
         navy: {
-          bgStart: "#0B1220",
-          bgEnd: "#111827",
-          card: "#131C2E",
-          cardHover: "#18243B",
-          border: "#1E293B",
-          heading: "#F5F5F0",
-          body: "#94A3B8",
-          subtle: "#64748B",
+          bgStart: "rgb(var(--navy-bg-start) / <alpha-value>)",
+          bgEnd: "rgb(var(--navy-bg-end) / <alpha-value>)",
+          card: "rgb(var(--navy-card) / <alpha-value>)",
+          cardHover: "rgb(var(--navy-card-hover) / <alpha-value>)",
+          border: "rgb(var(--navy-border) / <alpha-value>)",
+          heading: "rgb(var(--navy-heading) / <alpha-value>)",
+          body: "rgb(var(--navy-body) / <alpha-value>)",
+          subtle: "rgb(var(--navy-subtle) / <alpha-value>)",
+          onAccent: "rgb(var(--navy-on-accent) / <alpha-value>)",
         },
         mint: {
-          DEFAULT: "#34D399",
-          hover: "#10B981",
-          light: "rgba(52, 211, 153, 0.12)",
-          border: "rgba(52, 211, 153, 0.3)",
+          DEFAULT: "rgb(var(--mint) / <alpha-value>)",
+          hover: "rgb(var(--mint-hover) / <alpha-value>)",
+          light: "rgb(var(--mint) / 0.12)",
+          border: "rgb(var(--mint) / 0.3)",
         },
       },
       fontFamily: {
@@ -40,6 +41,7 @@ const config: Config = {
       },
     },
   },
+  darkMode: "class",
   plugins: [],
 };
 

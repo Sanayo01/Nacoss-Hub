@@ -85,7 +85,7 @@ export default function ApprovalsWorkspace({
         <input name="title" required minLength={3} placeholder="Action title" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" rows={3} placeholder="Action details (or announcement body)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
         <input name="amount" type="number" min="0.01" step="0.01" placeholder="Amount for spending requests" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-        <button className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-bgStart md:col-span-2">Submit for approval</button>
+        <button className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-onAccent md:col-span-2">Submit for approval</button>
       </form>
 
       <div className="space-y-3">
@@ -112,7 +112,7 @@ export default function ApprovalsWorkspace({
               )}
               {canDecide && request.status === "PENDING" && approvers.includes(office) && !alreadyDecided && (
                 <div className="mt-4 flex gap-2">
-                  <button onClick={() => void decide(request.id, "APPROVED")} className="min-h-touch rounded-lg bg-mint px-4 text-xs font-bold text-navy-bgStart">Approve</button>
+                  <button onClick={() => void decide(request.id, "APPROVED")} className="min-h-touch rounded-lg bg-mint px-4 text-xs font-bold text-navy-onAccent">Approve</button>
                   <button onClick={() => reject(request.id)} className="min-h-touch rounded-lg border border-red-400/40 px-4 text-xs text-red-300">Reject</button>
                 </div>
               )}

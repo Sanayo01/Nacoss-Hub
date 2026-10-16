@@ -119,7 +119,7 @@ export default function AnnouncementsPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-bold border transition-colors whitespace-nowrap min-h-touch ${
                 selectedCategory === cat
-                  ? "border-mint bg-mint text-navy-bgStart"
+                  ? "border-mint bg-mint text-navy-onAccent"
                   : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
               }`}
             >

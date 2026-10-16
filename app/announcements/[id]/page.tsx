@@ -113,7 +113,7 @@ export default function SingleAnnouncementPage({
 
           <button
             onClick={handleCopyWhatsApp}
-            className="px-4 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center gap-1.5 min-h-touch"
+            className="px-4 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center gap-1.5 min-h-touch"
           >
             {copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />}
             {copied ? "Copied for WhatsApp!" : "Share to WhatsApp"}

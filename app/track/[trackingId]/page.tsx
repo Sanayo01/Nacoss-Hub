@@ -113,7 +113,7 @@ export default function TrackingDetailPage({
         <div className="flex justify-center gap-3">
           <Link
             href="/track"
-            className="px-5 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow"
+            className="px-5 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow"
           >
             Try Another ID
           </Link>

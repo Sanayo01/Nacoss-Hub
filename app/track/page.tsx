@@ -50,7 +50,7 @@ export default function TrackPage() {
             />
             <button
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-mint text-navy-bgStart hover:bg-mint-hover transition-colors"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-xl bg-mint text-navy-onAccent hover:bg-mint-hover transition-colors"
               aria-label="Submit search"
             >
               <Search className="h-4 w-4" />
@@ -60,7 +60,7 @@ export default function TrackPage() {
 
         <button
           type="submit"
-          className="w-full py-3.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-lg transition-all min-h-touch flex items-center justify-center gap-2"
+          className="w-full py-3.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg transition-all min-h-touch flex items-center justify-center gap-2"
         >
           Check Tracking Status <ArrowRight className="h-4 w-4" />
         </button>

@@ -127,7 +127,7 @@ export function ProWorkspace({ data }: {
           <p className="text-xs text-navy-subtle">Student-feed announcements are official notices. Publishing requests require General Secretary or President approval; urgent posts are flagged automatically.</p>
           <div className="flex flex-wrap gap-2">
             <button className="min-h-touch rounded-xl border border-navy-border px-4 text-sm font-bold text-navy-heading">Save draft</button>
-            <button type="button" onClick={(event) => { const form = event.currentTarget.form; if (form?.reportValidity()) void saveDraft(form, true); }} className="min-h-touch rounded-xl bg-mint px-4 text-sm font-bold text-navy-bgStart">Submit for approval</button>
+            <button type="button" onClick={(event) => { const form = event.currentTarget.form; if (form?.reportValidity()) void saveDraft(form, true); }} className="min-h-touch rounded-xl bg-mint px-4 text-sm font-bold text-navy-onAccent">Submit for approval</button>
           </div>
         </form>
       </Box>
@@ -159,7 +159,7 @@ export function ProWorkspace({ data }: {
             <input required name="scheduledAt" type="datetime-local" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           </div>
           <input name="notes" placeholder="Notes" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Schedule content</button>
+          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Schedule content</button>
         </form>
         <ul className="space-y-2 text-xs text-navy-body">{calendar.map((item) => <li key={item.id}>{new Date(item.scheduledAt).toLocaleString()} · {item.channel} · {item.title}</li>)}</ul>
       </Box>
@@ -169,7 +169,7 @@ export function ProWorkspace({ data }: {
           <input name="description" placeholder="Description" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <input name="file" required type="file" accept="image/jpeg,image/png,image/webp,image/gif,application/pdf" className="text-xs text-navy-body" />
           <p className="text-[11px] text-navy-subtle">Images and PDF only, max 10 MB. Prototype files are stored locally.</p>
-          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Upload asset</button>
+          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Upload asset</button>
         </form>
         <ul className="space-y-2 text-xs text-navy-body">{assets.map((asset) =>
           <li key={asset.id} className="flex justify-between gap-3"><span>{asset.title} · {asset.fileName} ({Math.ceil(asset.size / 1024)} KB)</span><a className="text-mint underline" href={`/api/office/pro/assets/${asset.id}`}>Download</a></li>
@@ -181,7 +181,7 @@ export function ProWorkspace({ data }: {
         <input name="title" required minLength={3} placeholder="Event / coverage assignment" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <select name="office" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm">{EXECUTIVES_LIST.map((item) => <option key={item.officeSlug} value={item.officeSlug}>{item.position}</option>)}</select>
         <input name="dueDate" type="datetime-local" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart md:col-span-3">Assign coverage task</button>
+        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent md:col-span-3">Assign coverage task</button>
       </form>
       <ul className="space-y-1 text-xs text-navy-body">{coverage.map((task) => <li key={task.id}>{task.title} · {task.assignedToOffice}{task.dueDate ? ` · due ${new Date(task.dueDate).toLocaleString()}` : ""}</li>)}</ul>
     </Box>
@@ -261,7 +261,7 @@ export function SoftwareWorkspace({ data }: { data: { requests: PlatformRequest[
           <input name="skills" required placeholder="Skills" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <input name="availability" required placeholder="Availability" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <input name="assignedTask" placeholder="Assigned task (optional)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Add volunteer</button>
+          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Add volunteer</button>
         </form>
         <ul className="space-y-2 text-xs text-navy-body">{developers.map((dev) => <li key={dev.id}><strong>{dev.name}</strong> · {dev.skills} · {dev.availability}{dev.assignedTask ? ` · ${dev.assignedTask}` : ""}</li>)}</ul>
       </Box>
@@ -271,7 +271,7 @@ export function SoftwareWorkspace({ data }: { data: { requests: PlatformRequest[
           <input name="title" required placeholder="Release title" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <textarea name="notes" required minLength={5} placeholder="Changes and fixes" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <label className="flex gap-2 text-xs text-navy-body"><input type="checkbox" name="published" /> Publish notes</label>
-          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Save release notes</button>
+          <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Save release notes</button>
         </form>
         <ul className="space-y-2 text-xs text-navy-body">{releases.map((note) => <li key={note.id}><strong>{note.version} · {note.title}</strong> {note.published ? "· Published" : "· Draft"} — {note.notes}</li>)}</ul>
       </Box>
@@ -281,7 +281,7 @@ export function SoftwareWorkspace({ data }: { data: { requests: PlatformRequest[
       <form className="grid gap-2" onSubmit={(event) => void submitTechnicalChange(event)}>
         <input name="title" required minLength={4} placeholder="Change title" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" required minLength={10} placeholder="Reason and requested role/account change" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Request two-key approval</button>
+        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Request two-key approval</button>
       </form>
     </Box>
   </div>;
@@ -354,7 +354,7 @@ export function SocialWorkspace({ initialEvents }: { initialEvents: SocialEvent[
         <input name="budgetRequest" required type="number" min="0" step="0.01" placeholder="Budget request (NGN)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" required minLength={10} placeholder="Event description" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
         <textarea name="checklist" placeholder={"Checklist (one item per line)\nVenue\nPromotion"} className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
-        <button className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart md:col-span-2">Submit for Treasurer approval</button>
+        <button className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent md:col-span-2">Submit for Treasurer approval</button>
       </form>
     </section>
     {events.map((item) => <article key={item.id} className="space-y-4 rounded-2xl border border-navy-border bg-navy-card p-5">
@@ -401,7 +401,7 @@ export function SocialWorkspace({ initialEvents }: { initialEvents: SocialEvent[
       {item.status === "APPROVED" && new Date(item.endsAt) < new Date() && <form className="grid gap-2 border-t border-navy-border pt-3" onSubmit={(event) => void saveReport(event, item.id)}>
         <label className="text-xs font-bold text-navy-heading">Post-event report</label>
         <textarea name="report" required minLength={5} defaultValue={item.report ?? ""} placeholder="Outcomes, attendance, and follow-up" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-        <button className="min-h-touch rounded-lg bg-mint px-4 text-xs font-bold text-navy-bgStart">Save event report</button>
+        <button className="min-h-touch rounded-lg bg-mint px-4 text-xs font-bold text-navy-onAccent">Save event report</button>
       </form>}
       {item.feedback?.length ? <div className="space-y-2 border-t border-navy-border pt-3">
         <h3 className="text-xs font-bold uppercase text-navy-subtle">Post-event feedback · {item.feedback.length}</h3>
@@ -430,7 +430,7 @@ export function StudentPlatformRequestForm() {
     <select name="kind" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm"><option value="BUG">Bug report</option><option value="FEATURE">Feature request</option></select>
     <input name="title" required minLength={4} maxLength={160} placeholder="Short title" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
     <textarea name="description" required minLength={10} maxLength={5000} placeholder="What happened or what would help?" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-    <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Submit request</button>
+    <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Submit request</button>
     {message && <p role="status" className="text-xs text-mint">{message}</p>}
   </form>;
 }
@@ -457,7 +457,7 @@ export function PublicEventsWorkspace({ initialEvents }: { initialEvents: Public
         <input name="studentName" required minLength={2} placeholder="Name (demo only)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <input name="task" required placeholder="How would you like to help?" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <label className="flex gap-2 text-xs text-navy-body sm:col-span-2"><input type="checkbox" name="hoursOptIn" /> I opt in to having my volunteer hours recorded.</label>
-        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart sm:col-span-2">Volunteer</button>
+        <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent sm:col-span-2">Volunteer</button>
       </form>
       <div className="flex flex-wrap gap-2">
         <button onClick={() => void postEvent(event.id, "rsvp", { response: "ATTENDING" })} className="min-h-touch rounded-lg border border-navy-border px-3 text-xs text-navy-body">RSVP: attending</button>

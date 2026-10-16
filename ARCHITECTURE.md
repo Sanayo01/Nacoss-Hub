@@ -2,7 +2,7 @@
 
 ## Scope and stack
 
-NACOS Hub is a mock-data prototype for NACOS UNILAG computing students. It uses Next.js 14 App Router, TypeScript, Tailwind theme tokens, Prisma with SQLite, and Zod. It is not production-ready and must not store real student or executive records.
+NACOS Hub is a mock-data prototype for NACOS UNILAG computing students. It uses Next.js 14 App Router, TypeScript, Tailwind theme tokens, Prisma with SQLite, and Zod. A browser-local theme preference switches the shared palette between dark navy and light mode. It is not production-ready and must not store real student or executive records.
 
 ## Data and request flow
 

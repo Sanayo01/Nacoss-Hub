@@ -96,11 +96,11 @@ export default function HomePage() {
   };
 
   const quickPickCategories = [
-    { label: "Academics & Tests", category: "Academics", icon: "📚", office: "Director of Academics" },
-    { label: "Welfare & Lab Facilities", category: "Welfare", icon: "🏥", office: "Welfare Director" },
+    { label: "Academics & Tests", category: "Academics", icon: "📚", office: "Vice President" },
+    { label: "Welfare & Lab Facilities", category: "Welfare", icon: "🏥", office: "Welfare Secretary" },
     { label: "Dues & Receipts", category: "Finance/Dues", icon: "💳", office: "Financial Secretary" },
-    { label: "Events & Dinners", category: "Events", icon: "🎉", office: "Social Director" },
-    { label: "Coding & Masterclass", category: "Software/Tech", icon: "💻", office: "Director of Software" },
+    { label: "Events & Dinners", category: "Events", icon: "🎉", office: "Social Secretary" },
+    { label: "Coding & Masterclass", category: "Software/Tech", icon: "💻", office: "Software Director" },
     { label: "Announcements & PR", category: "Media/Announcements", icon: "📢", office: "PRO" },
   ];
 
@@ -128,7 +128,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-stretch gap-4 pt-2">
             <Link
               href="/concern"
-              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-2xl shadow-xl shadow-mint/20 transition-all transform hover:-translate-y-0.5 min-h-touch"
+              className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-4 text-base font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-2xl shadow-xl shadow-mint/20 transition-all transform hover:-translate-y-0.5 min-h-touch"
             >
               <Send className="h-5 w-5" />
               Reach an Exec
@@ -204,7 +204,7 @@ export default function HomePage() {
             </h2>
           </div>
           <Link href="/execs" className="text-xs text-mint hover:underline font-semibold flex items-center gap-1">
-            View All 12 Execs <ArrowRight className="h-3 w-3" />
+            View All 11 Execs <ArrowRight className="h-3 w-3" />
           </Link>
         </div>
 
@@ -360,7 +360,7 @@ export default function HomePage() {
 
           <Link
             href="/pulse"
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-md transition-all"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-md transition-all"
           >
             Cast Your Anonymous Vote
           </Link>

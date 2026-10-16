@@ -166,7 +166,7 @@ export default function AboutPage() {
         </div>
         <Link
           href="/admin"
-          className="px-4 py-2 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow shrink-0 flex items-center gap-1.5"
+          className="px-4 py-2 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow shrink-0 flex items-center gap-1.5"
         >
           Open Admin Demo <ArrowRight className="h-3.5 w-3.5" />
         </Link>

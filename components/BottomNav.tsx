@@ -33,7 +33,7 @@ export default function BottomNav({ onOpenMore }: BottomNavProps) {
                 aria-label={item.label}
                 className="flex flex-col items-center justify-center min-h-touch min-w-touch px-2"
               >
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-mint text-navy-bgStart shadow-lg shadow-mint/20 transform active:scale-95 transition-transform">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-mint text-navy-onAccent shadow-lg shadow-mint/20 transform active:scale-95 transition-transform">
                   <Icon className="h-5 w-5" />
                 </div>
                 <span className="text-[10px] font-bold text-mint mt-0.5">

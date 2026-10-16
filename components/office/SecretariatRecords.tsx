@@ -63,7 +63,7 @@ export function OfficeDocumentVault({ initialDocuments, canFile }: { initialDocu
       <input name="driveLink" type="url" placeholder="Existing Drive link (HTTPS)" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
       <input name="file" type="file" accept=".pdf,.doc,.docx,.txt,.png,.jpg,.jpeg" className="rounded-lg border border-navy-border bg-navy-bgStart p-2 text-xs" />
       <textarea name="description" placeholder="Description" rows={2} className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
-      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart md:col-span-2">{busy ? "Saving…" : "File document"}</button>
+      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent md:col-span-2">{busy ? "Saving…" : "File document"}</button>
     </form>}
     <input value={query} onChange={(event) => setQuery(event.target.value)} aria-label="Search document vault" placeholder="Search titles, descriptions, folders, sessions, and tags" className="w-full rounded-lg border border-navy-border bg-navy-card p-3 text-sm" />
     <div className="grid gap-3 md:grid-cols-2">{shown.map((item) => <article key={item.id} className="rounded-2xl border border-navy-border bg-navy-card p-4">
@@ -118,7 +118,7 @@ export function OfficialLettersWorkspace({ initialLetters, office }: { initialLe
       <input name="recipient" required placeholder="Recipient / organization" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
       <input name="subject" required placeholder="Subject" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
       <textarea name="body" required minLength={10} rows={8} placeholder="Letter body" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Save draft</button>
+      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Save draft</button>
     </form>
     <div className="space-y-3">{letters.map((letter) => <article key={letter.id} className="rounded-2xl border border-navy-border bg-navy-card p-5">
       <div className="flex flex-wrap justify-between gap-2"><strong className="text-navy-heading">{letter.reference}</strong><span className="text-xs text-mint">{letter.status}</span></div>
@@ -165,7 +165,7 @@ export function OversightWorkspace({ initialQueries, office, canCreate }: { init
       <select name="kind" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm"><option value="QUERY">Formal query</option><option value="REMINDER">Reminder</option></select>
       <input name="subject" required placeholder="Subject" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
       <textarea name="message" required placeholder="Message and requested response" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
-      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart md:col-span-2">Record and send</button>
+      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent md:col-span-2">Record and send</button>
     </form>}
     <div className="space-y-3">{queries.map((item) => <article key={item.id} className="rounded-2xl border border-navy-border bg-navy-card p-5">
       <div className="flex justify-between gap-2"><strong className="text-navy-heading">{item.subject}</strong><span className="text-xs text-mint">{item.status}</span></div>
@@ -246,7 +246,7 @@ export function ScorecardPromiseEditor({ initialPromises }: { initialPromises: P
     </>;
   }
   return <div className="space-y-4"><StatusMessage text={message} />
-    <form onSubmit={(event) => void save(event)} className="grid gap-3 rounded-2xl border border-navy-border bg-navy-card p-5 md:grid-cols-2"><h2 className="font-bold md:col-span-2">Add promised vs delivered</h2>{fields()}<button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart md:col-span-2">Save promise</button></form>
+    <form onSubmit={(event) => void save(event)} className="grid gap-3 rounded-2xl border border-navy-border bg-navy-card p-5 md:grid-cols-2"><h2 className="font-bold md:col-span-2">Add promised vs delivered</h2>{fields()}<button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent md:col-span-2">Save promise</button></form>
     {rows.map((item) => <form key={item.id} onSubmit={(event) => void save(event, item.id)} className="grid gap-3 rounded-2xl border border-navy-border bg-navy-card p-5 md:grid-cols-2">{fields(item)}<button disabled={busy} className="min-h-touch rounded-xl border border-navy-border px-4 md:col-span-2">Update promise</button></form>)}
   </div>;
 }

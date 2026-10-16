@@ -103,7 +103,7 @@ export default function ExecsPage() {
         </div>
         <Link
           href="/concern"
-          className="px-5 py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-md min-h-touch flex items-center justify-center gap-2 shrink-0 transition-transform active:scale-95"
+          className="px-5 py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-md min-h-touch flex items-center justify-center gap-2 shrink-0 transition-transform active:scale-95"
         >
           <Send className="h-4 w-4" />
           Auto-Route My Concern
@@ -190,7 +190,7 @@ export default function ExecsPage() {
                   <Link
                     href={`/concern?office=${exec.officeSlug}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="flex-1 py-2 px-2 text-[11px] font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center justify-center gap-1 min-h-touch"
+                    className="flex-1 py-2 px-2 text-[11px] font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center justify-center gap-1 min-h-touch"
                   >
                     <Send className="h-3 w-3" />
                     Concern
@@ -292,7 +292,7 @@ export default function ExecsPage() {
               <Link
                 href={`/concern?office=${selectedExec.officeSlug}`}
                 onClick={() => setSelectedExec(null)}
-                className="flex-1 py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow text-center min-h-touch flex items-center justify-center gap-2"
+                className="flex-1 py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow text-center min-h-touch flex items-center justify-center gap-2"
               >
                 <Send className="h-4 w-4" />
                 Send Concern to {selectedExec.position}

@@ -1,6 +1,6 @@
 # NACOS Hub
 
-NACOS Hub is a mock-data prototype for NACOS UNILAG computing students. It demonstrates student services and executive-office workflows; it is not approved for real student data. Volunteer developers must review and rebuild production authentication, authorization, privacy, storage, and operational controls before real use.
+NACOS Hub is a mock-data prototype for NACOS UNILAG computing students. It demonstrates student services and executive-office workflows; it is not approved for real student data. Volunteer developers must review and rebuild production authentication, authorization, privacy, storage, and operational controls before real use. Use the floating theme control to switch between dark and light modes; the preference is saved in this browser.
 
 ## Run locally
 

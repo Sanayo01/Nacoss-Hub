@@ -23,7 +23,7 @@ type WelfareData = {
 };
 
 const inputClass = "rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm text-navy-heading";
-const buttonClass = "min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart";
+const buttonClass = "min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent";
 
 async function requestJson(url: string, method: string, body: unknown) {
   const response = await fetch(url, { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });

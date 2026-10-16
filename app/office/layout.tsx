@@ -61,7 +61,7 @@ export default async function OfficeLayout({ children }: { children: React.React
             {links.map(({ label, href, icon: Icon }) => (
               <Link key={href} href={href} className="flex min-h-touch items-center gap-3 rounded-xl px-3 text-sm text-navy-body hover:bg-navy-cardHover hover:text-mint">
                 <Icon size={17} /> {label}
-                {label === "Notifications" && unreadCount > 0 && <span className="ml-auto rounded-full bg-mint px-2 py-0.5 text-[10px] font-bold text-navy-bgStart">{unreadCount}</span>}
+                {label === "Notifications" && unreadCount > 0 && <span className="ml-auto rounded-full bg-mint px-2 py-0.5 text-[10px] font-bold text-navy-onAccent">{unreadCount}</span>}
               </Link>
             ))}
           </nav>

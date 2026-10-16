@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import BottomNav from "@/components/BottomNav";
 import MoreSheet from "@/components/MoreSheet";
 import Footer from "@/components/Footer";
+import ThemeToggle from "@/components/ThemeToggle";
 import "@/app/globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -21,7 +22,7 @@ export default function RootLayout({
   const isExecutiveWorkspace = pathname.startsWith("/office") || pathname === "/admin";
 
   return (
-    <html lang="en" className={`${inter.variable} dark`}>
+    <html lang="en" className={inter.variable}>
       <head>
         <title>NACOS Hub - UNILAG Student-to-Executive Platform</title>
         <meta
@@ -30,7 +31,8 @@ export default function RootLayout({
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
-      <body className="min-h-screen bg-gradient-to-b from-navy-bgStart to-navy-bgEnd text-navy-heading antialiased font-sans flex flex-col selection:bg-mint selection:text-navy-bgStart">
+      <body className="min-h-screen bg-gradient-to-b from-navy-bgStart to-navy-bgEnd text-navy-heading antialiased font-sans flex flex-col selection:bg-mint selection:text-navy-onAccent">
+        <ThemeToggle />
         {/* Sticky Header */}
         {!isExecutiveWorkspace && <Navbar />}
 

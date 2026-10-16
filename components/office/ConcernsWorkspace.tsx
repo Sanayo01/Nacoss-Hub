@@ -66,7 +66,7 @@ export default function ConcernsWorkspace({ initialConcerns, canManage }: { init
               </select>
               <input name="updateNote" required minLength={3} placeholder="Internal audit note" className="rounded-lg bg-navy-bgStart p-2 text-sm" />
               <textarea name="publicResponse" placeholder="Public response (optional)" className="rounded-lg bg-navy-bgStart p-2 text-sm md:col-span-2" />
-              <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart md:col-span-2">Save status</button>
+              <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent md:col-span-2">Save status</button>
             </form>
           )}
         </article>

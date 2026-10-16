@@ -11,7 +11,7 @@ export interface ExecutiveDefinition {
 }
 
 /**
- * SINGLE SOURCE OF TRUTH: The 11 Real NACOS UNILAG Executive Positions
+ * SINGLE SOURCE OF TRUTH: NACOS UNILAG executive positions and public directory details
  * Displayed in exact constitutional hierarchy order:
  * 1. President
  * 2. Vice President
@@ -25,16 +25,14 @@ export interface ExecutiveDefinition {
  * 10. Software Director
  * 11. PRO
  *
- * Real Test Addresses:
- * - General Secretary: sanayodeji087@gmail.com
- * - PRO: sanusifatih04@gmail.com
- * (All other offices use placeholder @nacos-unilag.example addresses)
+ * Public contact emails remain placeholders until each representative provides
+ * an address and grants permission to list it.
  */
 export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "president",
     position: "President",
-    name: "Name to be confirmed",
+    name: "Adeniji Fowoyemi",
     officeEmail: "president@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Overall departmental leadership, university administration representation, and strategic ecosystem partnerships.",
     handles: [
@@ -50,7 +48,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "vice-president",
     position: "Vice President",
-    name: "Name to be confirmed",
+    name: "Ladipo Samuel Sunday",
     officeEmail: "vice-president@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Internal committee coordination, academic welfare advocacy, and female computing community initiatives.",
     handles: [
@@ -66,8 +64,8 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "general-secretary",
     position: "General Secretary",
-    name: "Name to be confirmed",
-    officeEmail: "sanayodeji087@gmail.com", // REAL TESTING ADDRESS
+    name: "Sanusi Taiwo Ayodeji",
+    officeEmail: "gensec@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Official departmental correspondence, Secretariat clearance records, HOD letters, and NACOS Hub concern tracking.",
     handles: [
       "Secretariat operations and official meeting documentation",
@@ -76,13 +74,13 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
       "NACOS Hub concern tracking oversight and executive accountability",
     ],
     isListed: true,
-    emailConsent: true,
+    emailConsent: false,
     bio: "Head of the Secretariat. Responsible for official records, student correspondence, constitutional administration, and responsive departmental tracking.",
   },
   {
     officeSlug: "assistant-general-secretary",
     position: "Assistant General Secretary",
-    name: "Name to be confirmed",
+    name: "Abimbola Obafisayo",
     officeEmail: "ags@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Secretariat meeting minutes, event attendance logs, and administrative record assistance.",
     handles: [
@@ -98,7 +96,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "financial-secretary",
     position: "Financial Secretary",
-    name: "Name to be confirmed",
+    name: "Adeyanju Iremide Joseph",
     officeEmail: "finsec@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental dues payment, online dues verification, clearance receipts, and financial clearance forms.",
     handles: [
@@ -114,7 +112,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "treasurer",
     position: "Treasurer",
-    name: "Name to be confirmed",
+    name: "Akinsohun Oluwanifemi Susanna",
     officeEmail: "treasurer@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental fund disbursements, event budget reimbursements, and official financial audits.",
     handles: [
@@ -130,7 +128,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "social-secretary",
     position: "Social Secretary",
-    name: "Name to be confirmed",
+    name: "Anuoluwapo Odebiyi",
     officeEmail: "socials@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental social events, freshers orientation, annual dinner tickets, and tech social mixers.",
     handles: [
@@ -146,7 +144,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "sports-secretary",
     position: "Sports Secretary",
-    name: "Name to be confirmed",
+    name: "Olaronke Bakare",
     officeEmail: "sports@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental sports teams, inter-level football matches, Dean's Cup representation, and esports tournaments.",
     handles: [
@@ -162,7 +160,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   {
     officeSlug: "welfare-secretary",
     position: "Welfare Secretary",
-    name: "Name to be confirmed",
+    name: "John Samuel Olamide",
     officeEmail: "welfare@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Student lab facilities, AC and power complaints, lecture hall acoustics, hostel issues, and emergency aid.",
     handles: [
@@ -193,9 +191,9 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
   },
   {
     officeSlug: "pro",
-    position: "PRO",
-    name: "Fatih Sanusi",
-    officeEmail: "sanusifatih04@gmail.com", // REAL TESTING ADDRESS
+    position: "Public Relations Officer (PRO)",
+    name: "Oseh Praise",
+    officeEmail: "pro@nacos-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Official broadcast notices, social media features, press coverage, event promotions, and media partnerships.",
     handles: [
       "Official departmental broadcast announcements across social channels and WhatsApp",
@@ -204,7 +202,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
       "Media partnerships and external student press relations",
     ],
     isListed: true,
-    emailConsent: true,
+    emailConsent: false,
     bio: "Public Relations Officer. Manages departmental communication channels, verified announcements, press relations, and social media brand presence.",
   },
 ];

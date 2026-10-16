@@ -20,10 +20,10 @@ async function main() {
   await prisma.pulsePoll.deleteMany();
 
 
-  // 1. Executives (12 positions with realistic Nigerian names and real test emails)
+  // 1. Executive directory (11 current offices; no student IDs are stored)
   const executivesData = [
     {
-      name: "Oluwaseun Adeleke",
+      name: "Adeniji Fowoyemi",
       position: "President",
       officeSlug: "president",
       photoUrl: null,
@@ -33,7 +33,7 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Chidimma Okonkwo",
+      name: "Ladipo Samuel Sunday",
       position: "Vice President",
       officeSlug: "vice-president",
       photoUrl: null,
@@ -43,17 +43,17 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Name to be confirmed",
+      name: "Sanusi Taiwo Ayodeji",
       position: "General Secretary",
       officeSlug: "general-secretary",
       photoUrl: null,
       bio: "Managing departmental administrative operations, official correspondence, constitutional records, and student concern tracking.",
       goToThemFor: "Official departmental letters, general inquiries, status tracking, and executive accountability.",
-      officeEmail: "sanayodeji087@gmail.com", // REAL TEST EMAIL
+      officeEmail: "gensec@nacos-unilag.example",
       isActive: true,
     },
     {
-      name: "Babatunde Fashola",
+      name: "Abimbola Obafisayo",
       position: "Assistant General Secretary",
       officeSlug: "assistant-general-secretary",
       photoUrl: null,
@@ -63,7 +63,7 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Amina Ibrahim",
+      name: "Adeyanju Iremide Joseph",
       position: "Financial Secretary",
       officeSlug: "financial-secretary",
       photoUrl: null,
@@ -73,7 +73,7 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Chioma Nwachukwu",
+      name: "Akinsohun Oluwanifemi Susanna",
       position: "Treasurer",
       officeSlug: "treasurer",
       photoUrl: null,
@@ -83,19 +83,19 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Fatih Sanusi",
+      name: "Oseh Praise",
       position: "Public Relations Officer (PRO)",
       officeSlug: "pro",
       photoUrl: null,
       bio: "Broadcasting official announcements, managing social channels, media partnerships, and press releases.",
       goToThemFor: "Event promotion, official broadcasts, social media features, and press coverage.",
-      officeEmail: "sanusifatih04@gmail.com", // REAL EMAIL FOR TESTING
+      officeEmail: "pro@nacos-unilag.example",
       isActive: true,
     },
     {
-      name: "Tobi Bakre",
-      position: "Social Director",
-      officeSlug: "social-director",
+      name: "Anuoluwapo Odebiyi",
+      position: "Social Secretary",
+      officeSlug: "social-secretary",
       photoUrl: null,
       bio: "Organizing departmental dinners, hackathons social night, freshers orientation, and gaming tournaments.",
       goToThemFor: "NACOS social events, dinner ticketing, orientation week, and gaming competitions.",
@@ -103,9 +103,9 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Emeka Eze",
-      position: "Sports Director",
-      officeSlug: "sports-director",
+      name: "Olaronke Bakare",
+      position: "Sports Secretary",
+      officeSlug: "sports-secretary",
       photoUrl: null,
       bio: "Coordinating inter-level football matches, e-sports leagues, and Faculty Dean's Cup representation.",
       goToThemFor: "NACOS sports teams, Dean's Cup registration, and esports league entry.",
@@ -113,9 +113,9 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Folake Balogun",
-      position: "Welfare Director",
-      officeSlug: "welfare-director",
+      name: "John Samuel Olamide",
+      position: "Welfare Secretary",
+      officeSlug: "welfare-secretary",
       photoUrl: null,
       bio: "Championing student mental health, lab facility concerns, lecture hall acoustics, and emergency aid.",
       goToThemFor: "Hostel/Lab welfare issues, lecture hall complaints, and emergency student assistance.",
@@ -123,23 +123,13 @@ async function main() {
       isActive: true,
     },
     {
-      name: "Kazeem Adebayo",
-      position: "Director of Software",
-      officeSlug: "director-of-software",
+      name: "Name to be confirmed",
+      position: "Software Director",
+      officeSlug: "software-director",
       photoUrl: null,
       bio: "Leading software development projects, open-source workshops, developer circles, and departmental portal tech.",
       goToThemFor: "Code lab sessions, developer mentorship, open-source projects, and GitHub community.",
       officeEmail: "software@nacos-unilag.example",
-      isActive: true,
-    },
-    {
-      name: "Temitope Ojo",
-      position: "Director of Academics",
-      officeSlug: "director-of-academics",
-      photoUrl: null,
-      bio: "Managing tutorial sessions, past questions archive, exam prep bootcamps, and academic complaint resolution.",
-      goToThemFor: "Tutorial timetables, past question access, course rep coordination, and exam complaints.",
-      officeEmail: "academics@nacos-unilag.example",
       isActive: true,
     },
   ];
@@ -147,7 +137,7 @@ async function main() {
   for (const exec of executivesData) {
     await prisma.executive.create({ data: exec });
   }
-  console.log("Seeded 12 Executives.");
+  console.log("Seeded 11 active executive offices.");
 
   // 2. Announcements
   const announcementsData = [
@@ -156,14 +146,14 @@ async function main() {
       body: "Please note that the CSC 301 (Data Structures) test originally fixed for Thursday morning has been rescheduled to Friday at 10:00 AM in Lab 2. All 300L students must present their NACOS dues receipt at the entrance.",
       category: "Urgent",
       pinned: true,
-      authorOfficeSlug: "director-of-academics",
+      authorOfficeSlug: "vice-president",
     },
     {
       title: "NACOS Annual Hackathon 2026 Registration Open!",
       body: "Build the future of Fintech, AI, and EdTech! The 2026 NACOS UNILAG Hackathon features total prizes of ₦1,500,000, sponsor mentorship from top tech companies, and free refreshments. Form teams of 3-4 students across 100L-500L.",
       category: "Event",
       pinned: true,
-      authorOfficeSlug: "director-of-software",
+      authorOfficeSlug: "software-director",
     },
     {
       title: "Departmental Dues Payment Deadline & Clearance Notice",
@@ -177,7 +167,7 @@ async function main() {
       body: "The Directorate of Software in partnership with AWS Cloud Club UNILAG is hosting a 4-week cloud engineering masterclass covering Docker, Kubernetes, and Serverless deployment.",
       category: "Academic",
       pinned: false,
-      authorOfficeSlug: "director-of-software",
+      authorOfficeSlug: "software-director",
     },
     {
       title: "SIWES Defense Preparation Workshop for 400L Students",
@@ -191,7 +181,7 @@ async function main() {
       body: "Get ready for the annual NACOS Sports Week! Inter-level FIFA 26 tournament, 5-a-side football, and chess championships kick off at the UNILAG Sports Centre.",
       category: "General",
       pinned: false,
-      authorOfficeSlug: "sports-director",
+      authorOfficeSlug: "sports-secretary",
     },
   ];
 
@@ -637,11 +627,11 @@ async function main() {
       senderName: "Boluwatife Williams",
       senderEmail: "bolu.williams@example.com",
       level: "200L",
-      targetOfficeSlug: "director-of-academics",
+      targetOfficeSlug: "vice-president",
       status: "RESOLVED",
       publicResponse: "The Directorate of Academics liaised with the GST department and HOD. CSC 201 Lab session 2 has been moved to Wednesday 8 AM.",
       updates: [
-        { status: "RECEIVED", note: "Concern registered and routed to Director of Academics." },
+        { status: "RECEIVED", note: "Concern registered and routed to Vice President." },
         { status: "BEING_HANDLED", note: "Meeting held with GST Coordinator and CSC Lab Manager." },
         { status: "RESOLVED", note: "Lab schedule updated on departmental notice board." },
       ],
@@ -655,7 +645,7 @@ async function main() {
       senderName: null,
       senderEmail: null,
       level: "300L",
-      targetOfficeSlug: "welfare-director",
+      targetOfficeSlug: "welfare-secretary",
       status: "BEING_HANDLED",
       publicResponse: "Welfare team inspected Lab 1 with Faculty Works department. Maintenance team scheduled to service units on Thursday.",
       updates: [

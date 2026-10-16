@@ -57,7 +57,7 @@ export default function Navbar() {
 
           <Link
             href="/concern"
-            className="px-4 py-2 text-xs font-semibold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-lg shadow-mint/10 transition-all transform hover:-translate-y-0.5 min-h-touch flex items-center gap-1.5"
+            className="px-4 py-2 text-xs font-semibold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg shadow-mint/10 transition-all transform hover:-translate-y-0.5 min-h-touch flex items-center gap-1.5"
           >
             <Sparkles className="h-3.5 w-3.5" />
             Reach an Exec

@@ -106,7 +106,7 @@ export default function CalendarPage() {
           <a
             href="/api/calendar.ics"
             download="nacos-unilag-calendar.ics"
-            className="px-4 py-2.5 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow-lg transition-all min-h-touch flex items-center gap-2"
+            className="px-4 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg transition-all min-h-touch flex items-center gap-2"
           >
             <Rss className="h-4 w-4" /> Subscribe to iCal Feed
           </a>
@@ -120,7 +120,7 @@ export default function CalendarPage() {
             onClick={() => setViewMode("list")}
             className={`px-4 py-2 rounded-xl text-xs font-bold border transition-colors min-h-touch ${
               viewMode === "list"
-                ? "border-mint bg-mint text-navy-bgStart"
+                ? "border-mint bg-mint text-navy-onAccent"
                 : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
             }`}
           >
@@ -130,7 +130,7 @@ export default function CalendarPage() {
             onClick={() => setViewMode("month")}
             className={`px-4 py-2 rounded-xl text-xs font-bold border transition-colors min-h-touch ${
               viewMode === "month"
-                ? "border-mint bg-mint text-navy-bgStart"
+                ? "border-mint bg-mint text-navy-onAccent"
                 : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
             }`}
           >

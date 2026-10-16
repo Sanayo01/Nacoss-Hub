@@ -80,7 +80,7 @@ export default function MeetingsWorkspace({
           <input name="venue" required placeholder="Venue or meeting link" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
           <label className="flex items-center gap-2 text-sm text-navy-body"><input name="mandatory" type="checkbox" /> Mandatory attendance</label>
           <textarea name="agenda" required rows={3} placeholder="Agenda" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
-          <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-bgStart disabled:opacity-50 md:col-span-2">
+          <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-5 font-bold text-navy-onAccent disabled:opacity-50 md:col-span-2">
             {busy ? "Creating…" : "Create meeting"}
           </button>
         </form>

@@ -89,7 +89,7 @@ export default function DocumentsPage() {
               onClick={() => setSelectedCategory(cat)}
               className={`px-4 py-2 rounded-xl text-xs font-bold border transition-colors whitespace-nowrap min-h-touch ${
                 selectedCategory === cat
-                  ? "border-mint bg-mint text-navy-bgStart"
+                  ? "border-mint bg-mint text-navy-onAccent"
                   : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
               }`}
             >
@@ -147,7 +147,7 @@ export default function DocumentsPage() {
                   href={doc.fileUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-4 py-2 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center gap-1.5 min-h-touch"
+                  className="px-4 py-2 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow transition-colors flex items-center gap-1.5 min-h-touch"
                 >
                   <Download className="h-3.5 w-3.5" /> Download / Open
                 </a>

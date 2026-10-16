@@ -4,14 +4,39 @@
 
 @layer base {
   :root {
-    --background: 11 18 32;
-    --foreground: 245 245 240;
+    color-scheme: dark;
+    --navy-bg-start: 11 18 32;
+    --navy-bg-end: 17 24 39;
+    --navy-card: 19 28 46;
+    --navy-card-hover: 24 36 59;
+    --navy-border: 30 41 59;
+    --navy-heading: 245 245 240;
+    --navy-body: 148 163 184;
+    --navy-subtle: 100 116 139;
+    --navy-on-accent: 6 32 24;
+    --mint: 52 211 153;
+    --mint-hover: 16 185 129;
+  }
+
+  :root.light {
+    color-scheme: light;
+    --navy-bg-start: 248 250 252;
+    --navy-bg-end: 241 245 249;
+    --navy-card: 255 255 255;
+    --navy-card-hover: 241 245 249;
+    --navy-border: 203 213 225;
+    --navy-heading: 15 23 42;
+    --navy-body: 51 65 85;
+    --navy-subtle: 100 116 139;
+    --navy-on-accent: 6 32 24;
+    --mint: 4 120 87;
+    --mint-hover: 6 95 70;
   }
 }
 
 body {
-  background-color: #0B1220;
-  color: #F5F5F0;
+  background-color: rgb(var(--navy-bg-start));
+  color: rgb(var(--navy-heading));
 }
 
 /* Custom scrollbars */
@@ -20,12 +45,12 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0B1220;
+  background: rgb(var(--navy-bg-start));
 }
 ::-webkit-scrollbar-thumb {
-  background: #1E293B;
+  background: rgb(var(--navy-border));
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #34D399;
+  background: rgb(var(--mint));
 }

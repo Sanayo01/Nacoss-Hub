@@ -422,7 +422,7 @@ export default function AdminPage() {
 
           <button
             type="submit"
-            className="w-full py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center justify-center gap-2"
+            className="w-full py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center justify-center gap-2"
           >
             Access Executive Workspace
           </button>
@@ -508,7 +508,7 @@ export default function AdminPage() {
           onClick={() => setActiveTab("concerns")}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-colors flex items-center gap-2 ${
             activeTab === "concerns"
-              ? "border-mint bg-mint text-navy-bgStart"
+              ? "border-mint bg-mint text-navy-onAccent"
               : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
           }`}
         >
@@ -519,7 +519,7 @@ export default function AdminPage() {
           onClick={() => setActiveTab("announcements")}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-colors flex items-center gap-2 ${
             activeTab === "announcements"
-              ? "border-mint bg-mint text-navy-bgStart"
+              ? "border-mint bg-mint text-navy-onAccent"
               : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
           }`}
         >
@@ -530,7 +530,7 @@ export default function AdminPage() {
           onClick={() => setActiveTab("moderation")}
           className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-colors flex items-center gap-2 ${
             activeTab === "moderation"
-              ? "border-mint bg-mint text-navy-bgStart"
+              ? "border-mint bg-mint text-navy-onAccent"
               : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
           }`}
         >
@@ -557,14 +557,18 @@ export default function AdminPage() {
                     onChange={(e) => setFilteredOffice(e.target.value)}
                     className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-2 text-xs text-navy-heading"
                   >
-                    <option value="all">All 12 Offices</option>
+                    <option value="all">All 11 Offices</option>
+                    <option value="president">President</option>
+                    <option value="vice-president">Vice President</option>
                     <option value="general-secretary">General Secretary</option>
-                    <option value="director-of-academics">Director of Academics</option>
-                    <option value="welfare-director">Welfare Director</option>
+                    <option value="assistant-general-secretary">Assistant General Secretary</option>
                     <option value="financial-secretary">Financial Secretary</option>
-                    <option value="director-of-software">Director of Software</option>
+                    <option value="treasurer">Treasurer</option>
+                    <option value="social-secretary">Social Secretary</option>
+                    <option value="sports-secretary">Sports Secretary</option>
+                    <option value="welfare-secretary">Welfare Secretary</option>
+                    <option value="software-director">Software Director</option>
                     <option value="pro">PRO</option>
-                    <option value="social-director">Social Director</option>
                   </select>
                 </div>
 
@@ -714,7 +718,7 @@ export default function AdminPage() {
                           onClick={() => setUpdatingStatus(st.val)}
                           className={`py-2 px-3 rounded-xl text-xs font-bold border transition-colors ${
                             updatingStatus === st.val
-                              ? "border-mint bg-mint text-navy-bgStart"
+                              ? "border-mint bg-mint text-navy-onAccent"
                               : "border-navy-border bg-navy-card text-navy-body hover:text-navy-heading"
                           }`}
                         >
@@ -755,7 +759,7 @@ export default function AdminPage() {
                   <button
                     type="button"
                     onClick={handleUpdateConcernStatus}
-                    className="w-full py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center justify-center gap-2"
+                    className="w-full py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch flex items-center justify-center gap-2"
                   >
                     Save Status Change & Post Public Response
                   </button>
@@ -832,9 +836,16 @@ export default function AdminPage() {
                       className="w-full rounded-xl border border-navy-border bg-navy-bgStart p-3 text-navy-heading focus:border-mint focus:outline-none"
                     >
                       <option value="general-secretary">General Secretary</option>
+                      <option value="assistant-general-secretary">Assistant General Secretary</option>
+                      <option value="president">President</option>
+                      <option value="vice-president">Vice President</option>
+                      <option value="financial-secretary">Financial Secretary</option>
+                      <option value="treasurer">Treasurer</option>
+                      <option value="social-secretary">Social Secretary</option>
+                      <option value="sports-secretary">Sports Secretary</option>
+                      <option value="welfare-secretary">Welfare Secretary</option>
+                      <option value="software-director">Software Director</option>
                       <option value="pro">PRO</option>
-                      <option value="director-of-academics">Director of Academics</option>
-                      <option value="director-of-software">Director of Software</option>
                     </select>
                   </div>
                 </div>
@@ -863,7 +874,7 @@ export default function AdminPage() {
 
                 <button
                   type="submit"
-                  className="w-full py-3 text-xs font-bold text-navy-bgStart bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch"
+                  className="w-full py-3 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow min-h-touch"
                 >
                   Publish Announcement
                 </button>
@@ -942,7 +953,7 @@ export default function AdminPage() {
             <div className="flex items-center gap-2">
               <a
                 href="/api/admin/export?type=placements"
-                className="px-3 py-2 rounded-xl bg-mint text-navy-bgStart text-xs font-bold hover:bg-mint-hover transition-colors flex items-center gap-1.5"
+                className="px-3 py-2 rounded-xl bg-mint text-navy-onAccent text-xs font-bold hover:bg-mint-hover transition-colors flex items-center gap-1.5"
               >
                 <Download className="h-3.5 w-3.5" /> Export Placements CSV
               </a>

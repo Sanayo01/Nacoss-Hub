@@ -67,7 +67,7 @@ export function PresidentWorkspace({
         {item.canDecide ? <button disabled={busy} onClick={() => void run(() => fetch("/api/office/approvals", {
           method: "PATCH", headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ requestId: item.id, decision: "APPROVED" }),
-        }).then(async (response) => { const result = await response.json(); if (!response.ok) throw new Error(result.error); return result; }))} className="mt-2 min-h-touch rounded-lg bg-mint px-3 text-xs font-bold text-navy-bgStart">Approve</button> :
+        }).then(async (response) => { const result = await response.json(); if (!response.ok) throw new Error(result.error); return result; }))} className="mt-2 min-h-touch rounded-lg bg-mint px-3 text-xs font-bold text-navy-onAccent">Approve</button> :
           <p className="mt-2 text-[10px] text-navy-subtle">Awaiting another required office.</p>}
       </article>)}</div>
       {!pendingApprovals.length && <p className="text-sm text-navy-subtle">No pending actions.</p>}
@@ -88,7 +88,7 @@ export function PresidentWorkspace({
       <select name="category" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm">{["General", "Academic", "Event", "Deadline"].map((item) => <option key={item}>{item}</option>)}</select>
       <textarea required name="announcementBody" minLength={10} placeholder="Message to all executives" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm md:col-span-2" />
       <label className="flex gap-2 text-xs text-navy-body"><input type="checkbox" name="pinned" /> Pin announcement</label>
-      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart md:col-span-2">Submit announcement for approval</button>
+      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent md:col-span-2">Submit announcement for approval</button>
     </form>
     <section className="rounded-2xl border border-navy-border bg-navy-card p-5">
       <h2 className="mb-3 font-bold text-navy-heading">Executive scorecard</h2>
@@ -112,7 +112,7 @@ export function PresidentWorkspace({
         <h2 className="font-bold text-navy-heading">Delegate to the Vice President</h2>
         <label className="block text-xs text-navy-body">Start <input required name="startsAt" type="datetime-local" className="mt-1 block w-full rounded-lg border border-navy-border bg-navy-bgStart p-3" /></label>
         <label className="block text-xs text-navy-body">End <input required name="endsAt" type="datetime-local" className="mt-1 block w-full rounded-lg border border-navy-border bg-navy-bgStart p-3" /></label>
-        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Record delegation</button>
+        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Record delegation</button>
         <ul className="space-y-1 text-xs text-navy-body">{delegations.map((item) => <li key={item.id}>{item.status}: {new Date(item.startsAt).toLocaleString()} – {new Date(item.endsAt).toLocaleString()}</li>)}</ul>
       </form>}
       <form className="space-y-3 rounded-2xl border border-navy-border bg-navy-card p-5" onSubmit={(event) => {
@@ -127,7 +127,7 @@ export function PresidentWorkspace({
         <input name="title" required minLength={3} placeholder="Motion title" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" required placeholder="Motion and rationale" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <label className="text-xs text-navy-body">Quorum (%) <input name="quorumPercent" type="number" min="1" max="100" defaultValue="50" className="ml-2 w-20 rounded border border-navy-border bg-navy-bgStart p-2" /></label>
-        <button disabled={busy || meetings.length === 0} className="block min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Create motion</button>
+        <button disabled={busy || meetings.length === 0} className="block min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Create motion</button>
       </form>
     </div>
     <section className="space-y-3">
@@ -166,7 +166,7 @@ export function VicePresidentWorkspace({ committees, board, meetings }: {
         <input required name="name" placeholder="Committee name" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea name="description" placeholder="Purpose and outputs" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <fieldset className="grid grid-cols-2 gap-2 text-xs text-navy-body">{EXECUTIVES_LIST.map((executive) => <label key={executive.officeSlug} className="flex gap-2"><input type="checkbox" name="members" value={executive.officeSlug} />{executive.position}</label>)}</fieldset>
-        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Create committee</button>
+        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Create committee</button>
         <div className="space-y-2">{committees.map((item) => <p key={item.id} className="text-sm text-navy-body"><strong>{item.name}</strong> · {item.members.map((member) => member.office).join(", ")}</p>)}</div>
       </form>
       <form onSubmit={(event) => void submit(event, (form) => post("/api/office/vice-president/meetings", {
@@ -180,7 +180,7 @@ export function VicePresidentWorkspace({ committees, board, meetings }: {
         <input required name="venue" placeholder="Venue or link" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <textarea required name="agenda" placeholder="Agenda" className="w-full rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
         <label className="flex gap-2 text-xs text-navy-body"><input name="mandatory" type="checkbox" /> Mandatory</label>
-        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Submit for approval</button>
+        <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Submit for approval</button>
         <p className="text-xs text-navy-subtle">{meetings.length} upcoming meetings already on the shared calendar.</p>
       </form>
     </div>
@@ -243,7 +243,7 @@ export function MinutesStudio({ meetings }: { meetings: Array<{
         <button disabled={busy} type="button" onClick={(event) => {
           const form = event.currentTarget.form;
           if (form?.reportValidity()) void save(form, true);
-        }} className="min-h-touch rounded-xl bg-mint px-4 text-sm font-bold text-navy-bgStart">Submit for General Secretary approval</button></div>
+        }} className="min-h-touch rounded-xl bg-mint px-4 text-sm font-bold text-navy-onAccent">Submit for General Secretary approval</button></div>
     </form>
     <section className="space-y-2">{meetings.filter((meeting) => meeting.status).map((meeting) => <article key={meeting.id} className="rounded-xl border border-navy-border bg-navy-card p-4">
       <h3 className="font-semibold text-navy-heading">{meeting.title}</h3><p className="text-xs text-navy-subtle">{meeting.status} · {meeting.agendaItems?.length ?? 0} agenda/action item(s)</p>
@@ -273,7 +273,7 @@ export function GeneralSecretaryDelegation({ delegations }: { delegations: Deleg
     <form onSubmit={(event) => void create(event)} className="grid gap-3 md:grid-cols-3">
       <input required name="startsAt" type="datetime-local" aria-label="Cover starts" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
       <input required name="endsAt" type="datetime-local" aria-label="Cover ends" className="rounded-lg border border-navy-border bg-navy-bgStart p-3 text-sm" />
-      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-bgStart">Delegate to AGS</button>
+      <button disabled={busy} className="min-h-touch rounded-xl bg-mint px-4 font-bold text-navy-onAccent">Delegate to AGS</button>
     </form>
     {delegations.map((item) => <p key={item.id} className="text-xs text-navy-subtle">{item.status} · {new Date(item.startsAt).toLocaleString()} – {new Date(item.endsAt).toLocaleString()}</p>)}
   </section>;

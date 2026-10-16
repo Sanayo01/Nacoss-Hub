@@ -38,7 +38,7 @@ export function FinanceQueryForm() {
       <input className={fieldClass} name="name" maxLength={100} placeholder="Name (optional)" />
       <input className={fieldClass} name="email" type="email" maxLength={254} placeholder="Email (optional)" />
       <label className="flex items-center gap-2 text-sm text-navy-body"><input name="anonymous" type="checkbox" /> Submit anonymously</label>
-      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Send query</button>
+      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Send query</button>
     </form>
     {notice && <p role="status" className="text-sm text-mint">{notice}</p>}
   </PublicForm>;
@@ -67,7 +67,7 @@ export function WelfareCaseForm() {
       <input className={fieldClass} name="name" maxLength={100} placeholder="Name (optional)" />
       <input className={fieldClass} name="email" type="email" maxLength={254} placeholder="Email (optional)" />
       <label className="flex items-center gap-2 text-sm text-navy-body"><input name="anonymous" type="checkbox" /> Send anonymously</label>
-      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Send confidential case</button>
+      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Send confidential case</button>
     </form>
     {notice && <p role="status" className="text-sm text-mint">{notice}</p>}
   </PublicForm>;
@@ -91,7 +91,7 @@ export function SportsSignupForm() {
       <input className={fieldClass} name="name" required minLength={2} maxLength={100} placeholder="Mock name" />
       <input className={fieldClass} name="sport" required minLength={2} maxLength={80} placeholder="Sport" />
       <select className={fieldClass} name="level"><option>100L</option><option>200L</option><option>300L</option><option>400L</option><option>500L</option></select>
-      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-bgStart">Sign up</button>
+      <button className="min-h-touch rounded-lg bg-mint px-4 text-sm font-bold text-navy-onAccent">Sign up</button>
     </form>
     {notice && <p role="status" className="text-sm text-mint">{notice}</p>}
   </PublicForm>;
