@@ -109,7 +109,7 @@ export async function createOfficialLetter(input: {
       update: { nextValue: { increment: 1 } },
     });
     const reservedNumber = sequence.nextValue - 1;
-    const reference = `NACOS/GS/${year}/${String(reservedNumber).padStart(3, "0")}`;
+    const reference = `NACOSS/GS/${year}/${String(reservedNumber).padStart(3, "0")}`;
     const letter = await tx.officialLetter.create({
       data: { ...input, reference },
     });
@@ -389,7 +389,7 @@ export async function updateExecutiveDirectory(input: {
     };
     if (
       input.officeEmail !== current.officeEmail &&
-      !input.officeEmail.endsWith("@nacos-unilag.example") &&
+      !input.officeEmail.endsWith("@nacoss-unilag.example") &&
       testEmailForOffice[input.officeSlug] !== input.officeEmail
     ) throw new Error("Only placeholder addresses and approved test addresses are allowed");
     if (input.photoUrl && (!input.photoUrl.startsWith("/") || input.photoUrl.includes("..") || input.photoUrl.includes("\\"))) {

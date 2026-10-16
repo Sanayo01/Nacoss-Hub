@@ -314,10 +314,10 @@ export default function AdminPage() {
     if (!publishedAnn) return;
     const origin = window.location.origin;
     if (type === "whatsapp") {
-      const text = `🚨 *NACOS UNILAG OFFICIAL ANNOUNCEMENT*\n\n📌 *${publishedAnn.title}*\n\n${publishedAnn.body}\n\n🔗 View on NACOS Hub: ${origin}/announcements/${publishedAnn.id}\n\n#NACOSUNILAG`;
+      const text = `🚨 *NACOSS UNILAG OFFICIAL ANNOUNCEMENT*\n\n📌 *${publishedAnn.title}*\n\n${publishedAnn.body}\n\n🔗 View on NACOSS Hub: ${origin}/announcements/${publishedAnn.id}\n\n#NACOSSUNILAG`;
       navigator.clipboard.writeText(text);
     } else if (type === "social") {
-      const text = `📢 NACOS UNILAG: ${publishedAnn.title}\n\n${publishedAnn.body.substring(0, 180)}...\n\nRead more on NACOS Hub: ${origin}/announcements/${publishedAnn.id}\n#NACOSUNILAG`;
+      const text = `📢 NACOSS UNILAG: ${publishedAnn.title}\n\n${publishedAnn.body.substring(0, 180)}...\n\nRead more on NACOSS Hub: ${origin}/announcements/${publishedAnn.id}\n#NACOSSUNILAG`;
       navigator.clipboard.writeText(text);
     } else {
       navigator.clipboard.writeText(`${origin}/announcements/${publishedAnn.id}`);

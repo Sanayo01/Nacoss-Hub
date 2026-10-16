@@ -123,7 +123,7 @@ export function OfficialLettersWorkspace({ initialLetters, office }: { initialLe
     <div className="space-y-3">{letters.map((letter) => <article key={letter.id} className="rounded-2xl border border-navy-border bg-navy-card p-5">
       <div className="flex flex-wrap justify-between gap-2"><strong className="text-navy-heading">{letter.reference}</strong><span className="text-xs text-mint">{letter.status}</span></div>
       <p className="mt-1 text-sm text-navy-body">To: {letter.recipient} · {letter.subject}</p>
-      <div className="mt-4 bg-white text-slate-900 print:border-0"><Image src="/nacos-letterhead-placeholder.svg" width={1200} height={220} alt="NACOS UNILAG letterhead placeholder" className="h-auto w-full" /><div className="min-h-48 whitespace-pre-wrap p-6 text-sm">{letter.body}</div></div>
+      <div className="mt-4 bg-white text-slate-900 print:border-0"><Image src="/nacoss-letterhead-placeholder.svg" width={1200} height={220} alt="NACOSS UNILAG letterhead placeholder" className="h-auto w-full" /><div className="min-h-48 whitespace-pre-wrap p-6 text-sm">{letter.body}</div></div>
       <div className="mt-3 flex gap-3 text-xs"><button onClick={() => window.print()} className="text-mint underline">Print / save as PDF</button>
         {letter.status === "DRAFT" && office !== "general-secretary" && <button disabled={busy} onClick={() => void submit(letter.id)} className="text-mint underline">Submit for GenSec approval</button>}</div>
     </article>)}</div>

@@ -1,6 +1,6 @@
 # Security TODO before any real-data use
 
-**Current status: prototype only.** Do not import real student, alumni, executive, welfare, financial, or conduct information until every applicable item below has been reviewed and signed off by NACOS leadership and qualified security/privacy reviewers.
+**Current status: prototype only.** Do not import real student, alumni, executive, welfare, financial, or conduct information until every applicable item below has been reviewed and signed off by NACOSS leadership and qualified security/privacy reviewers.
 
 ## Identity and permissions
 

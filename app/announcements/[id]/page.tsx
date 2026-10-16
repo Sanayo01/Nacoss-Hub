@@ -43,7 +43,7 @@ export default function SingleAnnouncementPage({
 
   const handleCopyWhatsApp = () => {
     if (!ann) return;
-    const text = `🚨 *NACOS UNILAG ANNOUNCEMENT*\n\n📌 *${ann.title}*\n\n${ann.body}\n\n🔗 ${window.location.href}`;
+    const text = `🚨 *NACOSS UNILAG ANNOUNCEMENT*\n\n📌 *${ann.title}*\n\n${ann.body}\n\n🔗 ${window.location.href}`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

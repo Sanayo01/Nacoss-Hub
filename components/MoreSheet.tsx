@@ -43,7 +43,7 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
     },
     {
       title: "Platform Feedback",
-      desc: "Report a bug or request a NACOS Hub feature",
+      desc: "Report a bug or request a NACOSS Hub feature",
       href: "/platform",
       icon: Activity,
     },
@@ -67,7 +67,7 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
     },
     {
       title: "Student Handbook",
-      desc: "How NACOS works, office duties & committee contacts",
+      desc: "How NACOSS works, office duties & committee contacts",
       href: "/handbook",
       icon: BookOpen,
     },
@@ -98,7 +98,7 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
           <div className="flex items-center gap-2">
             <ShieldAlert className="h-5 w-5 text-mint" />
             <h3 className="font-bold text-lg text-navy-heading uppercase tracking-wide">
-              NACOS Hub Menu
+              NACOSS Hub Menu
             </h3>
           </div>
           <button
@@ -148,7 +148,7 @@ export default function MoreSheet({ isOpen, onClose }: MoreSheetProps) {
         {/* Neutral platform footer */}
         <div className="mt-4 pt-4 border-t border-navy-border text-center">
           <p className="text-[11px] text-navy-subtle">
-            NACOS UNILAG · Student-to-Executive Platform
+            NACOSS UNILAG · Student-to-Executive Platform
           </p>
         </div>
       </div>

@@ -80,7 +80,7 @@ export default function ExecsPage() {
       <div className="space-y-2">
         <div className="inline-flex items-center gap-2 rounded-full bg-mint/10 border border-mint/20 px-3 py-1 text-xs font-semibold text-mint">
           <UserCheck className="h-3.5 w-3.5" />
-          NACOS UNILAG Executive Council 2025/2026
+          NACOSS UNILAG Executive Council 2025/2026
         </div>
         <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-navy-heading">
           Executive Directory

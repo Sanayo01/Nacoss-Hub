@@ -50,9 +50,9 @@ export default function CalendarPage() {
     const icsString = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//NACOS UNILAG//Event//EN",
+      "PRODID:-//NACOSS UNILAG//Event//EN",
       "BEGIN:VEVENT",
-      `UID:nacos-event-${event.id}@nacos-unilag.org`,
+      `UID:nacoss-event-${event.id}@nacoss-unilag.org`,
       `DTSTAMP:${formatDate(new Date().toISOString())}`,
       `DTSTART:${formatDate(event.startsAt)}`,
       `DTEND:${formatDate(event.endsAt)}`,
@@ -91,7 +91,7 @@ export default function CalendarPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-mint/10 border border-mint/20 px-3 py-1 text-xs font-semibold text-mint">
             <CalendarIcon className="h-3.5 w-3.5" />
-            NACOS UNILAG Academic & Event Schedule
+            NACOSS UNILAG Academic & Event Schedule
           </div>
           <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-navy-heading">
             Departmental Calendar
@@ -105,7 +105,7 @@ export default function CalendarPage() {
         <div className="flex flex-wrap items-center gap-2 shrink-0">
           <a
             href="/api/calendar.ics"
-            download="nacos-unilag-calendar.ics"
+            download="nacoss-unilag-calendar.ics"
             className="px-4 py-2.5 text-xs font-bold text-navy-onAccent bg-mint hover:bg-mint-hover rounded-xl shadow-lg transition-all min-h-touch flex items-center gap-2"
           >
             <Rss className="h-4 w-4" /> Subscribe to iCal Feed

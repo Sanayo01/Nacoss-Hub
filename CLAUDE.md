@@ -1,5 +1,5 @@
-# NACOS Hub: project rules
-Prototype for NACOS UNILAG (computing students' association). Mock data only. It will be rebuilt and security-reviewed by volunteer developers before any real student data is used.
+# NACOSS Hub: project rules
+Prototype for NACOSS UNILAG (computing students' association). Mock data only. It will be rebuilt and security-reviewed by volunteer developers before any real student data is used.
 Stack: Next.js App Router, TypeScript, Tailwind, Prisma/SQLite (all DB access only through /lib/db), Zod validation. Theme: dark navy, mint green accent, theme tokens only.
 Rules:
 - Never recreate or overwrite existing work. Inspect first, then extend.

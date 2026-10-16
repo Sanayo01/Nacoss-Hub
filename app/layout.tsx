@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <title>NACOS Hub - UNILAG Student-to-Executive Platform</title>
+        <title>NACOSS Hub - UNILAG Student-to-Executive Platform</title>
         <meta
           name="description"
-          content="Official student-to-executive communication platform for NACOS UNILAG. Direct contact, concern tracking, and announcements."
+          content="Official student-to-executive communication platform for NACOSS UNILAG. Direct contact, concern tracking, and announcements."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>

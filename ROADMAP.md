@@ -1,6 +1,6 @@
 # Volunteer roadmap
 
-NACOS Hub is a mock-data prototype. Each item is deliberately scoped for a volunteer to pick up independently. Do not use real student data until the required review and security work in [SECURITY-TODO.md](./SECURITY-TODO.md) is complete.
+NACOSS Hub is a mock-data prototype. Each item is deliberately scoped for a volunteer to pick up independently. Do not use real student data until the required review and security work in [SECURITY-TODO.md](./SECURITY-TODO.md) is complete.
 
 ## Access and governance
 

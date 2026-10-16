@@ -103,10 +103,10 @@ export function ProWorkspace({ data }: {
   async function copyShareKit(channel: "WhatsApp" | "Instagram" | "X") {
     const link = `${window.location.origin}/announcements`;
     const text = channel === "WhatsApp"
-      ? `*NACOS UNILAG ${preview.category.toUpperCase()} ANNOUNCEMENT*\n\n*${preview.title}*\n\n${preview.body}\n\n${link}`
+      ? `*NACOSS UNILAG ${preview.category.toUpperCase()} ANNOUNCEMENT*\n\n*${preview.title}*\n\n${preview.body}\n\n${link}`
       : channel === "Instagram"
-        ? `NACOS UNILAG: ${preview.title}\n\n${preview.body.slice(0, 180)}${preview.body.length > 180 ? "..." : ""}\n\nMore: ${link}\n#NACOSUNILAG`
-        : `${preview.title} — ${preview.body.slice(0, 200)}${preview.body.length > 200 ? "…" : ""} ${link} #NACOSUNILAG`;
+        ? `NACOSS UNILAG: ${preview.title}\n\n${preview.body.slice(0, 180)}${preview.body.length > 180 ? "..." : ""}\n\nMore: ${link}\n#NACOSSUNILAG`
+        : `${preview.title} — ${preview.body.slice(0, 200)}${preview.body.length > 200 ? "…" : ""} ${link} #NACOSSUNILAG`;
     try {
       await navigator.clipboard.writeText(text);
       setCopyState(`${channel} version copied`);
@@ -143,8 +143,8 @@ export function ProWorkspace({ data }: {
         )}</div>
         {copyState && <p role="status" className="text-xs text-mint">{copyState}</p>}
         <div className="space-y-1 text-xs text-navy-body">
-          <p className="font-bold">NACOS WhatsApp groups — manually check before sending:</p>
-          {["NACOS general announcements", "Each level/year group", "NACOS executives", "Event-specific group"].map((group) =>
+          <p className="font-bold">NACOSS WhatsApp groups — manually check before sending:</p>
+          {["NACOSS general announcements", "Each level/year group", "NACOSS executives", "Event-specific group"].map((group) =>
             <label key={group} className="flex gap-2"><input type="checkbox" /> {group}</label>
           )}
         </div>

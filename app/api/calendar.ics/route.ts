@@ -13,10 +13,10 @@ export async function GET() {
     let icsContent = [
       "BEGIN:VCALENDAR",
       "VERSION:2.0",
-      "PRODID:-//NACOS UNILAG//Departmental Calendar//EN",
+      "PRODID:-//NACOSS UNILAG//Departmental Calendar//EN",
       "CALSCALE:GREGORIAN",
       "METHOD:PUBLISH",
-      "X-WR-CALNAME:NACOS UNILAG Events",
+      "X-WR-CALNAME:NACOSS UNILAG Events",
       "X-WR-TIMEZONE:Africa/Lagos",
     ];
 
@@ -27,7 +27,7 @@ export async function GET() {
 
       icsContent.push(
         "BEGIN:VEVENT",
-        `UID:nacos-event-${ev.id}@nacos-unilag.org`,
+        `UID:nacoss-event-${ev.id}@nacoss-unilag.org`,
         `DTSTAMP:${now}`,
         `DTSTART:${dtStart}`,
         `DTEND:${dtEnd}`,
@@ -46,7 +46,7 @@ export async function GET() {
     return new NextResponse(body, {
       headers: {
         "Content-Type": "text/calendar; charset=utf-8",
-        "Content-Disposition": 'attachment; filename="nacos-unilag-calendar.ics"',
+        "Content-Disposition": 'attachment; filename="nacoss-unilag-calendar.ics"',
       },
     });
   } catch (error) {

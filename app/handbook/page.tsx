@@ -15,11 +15,11 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
   {
     id: "office-duties",
     category: "Executive Duties",
-    question: "What does each NACOS executive office actually do?",
+    question: "What does each NACOSS executive office actually do?",
     answer: [
       "President: Overall departmental lead, university administration advocacy, and external sponsorship deals.",
       "Vice President: Coordinates female tech initiatives, mentorship circles, and internal committee leads.",
-      "General Secretary: Secretariat head, official letters, meeting minutes, constitutional records, and NACOS Hub concern tracking.",
+      "General Secretary: Secretariat head, official letters, meeting minutes, constitutional records, and NACOSS Hub concern tracking.",
       "Assistant General Secretary: Assists Secretariat documentation, meeting logistics, and student records.",
       "Financial Secretary: Collects departmental dues, issues clearance receipts, and maintains financial ledgers.",
       "Treasurer: Oversees departmental bank accounts, budget disbursements, and vendor audits.",
@@ -33,11 +33,11 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
   {
     id: "official-letter",
     category: "Administrative Requests",
-    question: "How do I request an official NACOS letter or HOD recommendation?",
+    question: "How do I request an official NACOSS letter or HOD recommendation?",
     answer: [
-      "1. Go to the Document Vault on NACOS Hub and download the SIWES / Official Letter Request Form.",
+      "1. Go to the Document Vault on NACOSS Hub and download the SIWES / Official Letter Request Form.",
       "2. Fill in your full student name, matriculation number, course level, and target organization details.",
-      "3. Submit a concern on NACOS Hub categorized under General/Other addressed to the General Secretary.",
+      "3. Submit a concern on NACOSS Hub categorized under General/Other addressed to the General Secretary.",
       "4. The Secretariat will process and issue an official stamped recommendation letter signed by the HOD within 48 business hours.",
     ],
   },
@@ -46,18 +46,18 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
     category: "Finance and Dues",
     question: "How do I pay departmental dues and get my online clearance receipt?",
     answer: [
-      "1. Pay annual NACOS UNILAG departmental dues into the official UNILAG NACOS Bank Account provided in announcements.",
+      "1. Pay annual NACOSS UNILAG departmental dues into the official UNILAG NACOSS Bank Account provided in announcements.",
       "2. Keep your bank transfer receipt reference.",
-      "3. Submit your payment receipt to the Financial Secretary or verify online on NACOS Hub.",
+      "3. Submit your payment receipt to the Financial Secretary or verify online on NACOSS Hub.",
       "4. Your clearance status will be updated to RESOLVED and your official digital receipt will be downloadable.",
     ],
   },
   {
     id: "join-committee",
     category: "Student Involvement",
-    question: "How do I join a NACOS executive committee or volunteer for events?",
+    question: "How do I join a NACOSS executive committee or volunteer for events?",
     answer: [
-      "NACOS operates four active student committees:",
+      "NACOSS operates four active student committees:",
       "- Software and Dev Committee (led by the Software Director)",
       "- Media and Publicity Unit (led by PRO)",
       "- Welfare and Student Aid Taskforce (led by the Welfare Secretary)",
@@ -68,11 +68,11 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
   {
     id: "elections-constitution",
     category: "Elections and Governance",
-    question: "How do NACOS UNILAG elections work and who is eligible to vote?",
+    question: "How do NACOSS UNILAG elections work and who is eligible to vote?",
     answer: [
       "- Elections take place at the end of the academic session under the supervision of the Independent Electoral Committee (IEC).",
       "- All matriculated Computer Science students who have cleared their annual departmental dues are eligible to vote.",
-      "- Campaigning rules, candidate manifestos, and voting portals are published officially on NACOS Hub.",
+      "- Campaigning rules, candidate manifestos, and voting portals are published officially on NACOSS Hub.",
     ],
   },
   {
@@ -80,7 +80,7 @@ const HANDBOOK_ITEMS: AccordionItem[] = [
     category: "Academic Support",
     question: "Who do I contact if I have a timetable clash or grade recording issue?",
     answer: [
-      "Submit a routed concern on NACOS Hub under Academics. The Vice President works directly with Course Representatives and the Departmental Examination Officer to resolve practical lab clashes and grade verification requests.",
+      "Submit a routed concern on NACOSS Hub under Academics. The Vice President works directly with Course Representatives and the Departmental Examination Officer to resolve practical lab clashes and grade verification requests.",
     ],
   },
 ];
@@ -109,7 +109,7 @@ export default function HandbookPage() {
       <div className="space-y-2">
         <div className="inline-flex items-center gap-2 rounded-full bg-mint/10 border border-mint/20 px-3 py-1 text-xs font-semibold text-mint">
           <BookOpen className="h-3.5 w-3.5" />
-          How NACOS UNILAG Works
+          How NACOSS UNILAG Works
         </div>
         <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-navy-heading">
           Student Handbook

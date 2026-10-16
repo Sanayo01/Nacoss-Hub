@@ -80,7 +80,7 @@ export async function GET(req: NextRequest) {
     return new NextResponse(csvContent, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": 'attachment; filename="nacos-unilag-approved-student-records.csv"',
+        "Content-Disposition": 'attachment; filename="nacoss-unilag-approved-student-records.csv"',
       },
     });
   } catch (error) {

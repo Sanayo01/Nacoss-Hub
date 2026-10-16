@@ -11,7 +11,7 @@ export interface ExecutiveDefinition {
 }
 
 /**
- * SINGLE SOURCE OF TRUTH: NACOS UNILAG executive positions and public directory details
+ * SINGLE SOURCE OF TRUTH: NACOSS UNILAG executive positions and public directory details
  * Displayed in exact constitutional hierarchy order:
  * 1. President
  * 2. Vice President
@@ -33,7 +33,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "president",
     position: "President",
     name: "Adeniji Fowoyemi",
-    officeEmail: "president@nacos-unilag.example",
+    officeEmail: "president@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Overall departmental leadership, university administration representation, and strategic ecosystem partnerships.",
     handles: [
       "Executive Council leadership and departmental strategic direction",
@@ -43,13 +43,13 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     ],
     isListed: true,
     emailConsent: false,
-    bio: "Chief Executive Officer of the Nigerian Association of Computing Students (NACOS), UNILAG Chapter. Oversees overall administration, faculty advocacy, and student representation.",
+    bio: "Chief Executive Officer of the Nigerian Association of Computing Students (NACOSS), UNILAG Chapter. Oversees overall administration, faculty advocacy, and student representation.",
   },
   {
     officeSlug: "vice-president",
     position: "Vice President",
     name: "Ladipo Samuel Sunday",
-    officeEmail: "vice-president@nacos-unilag.example",
+    officeEmail: "vice-president@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Internal committee coordination, academic welfare advocacy, and female computing community initiatives.",
     handles: [
       "Coordination of internal standing executive committees",
@@ -65,13 +65,13 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "general-secretary",
     position: "General Secretary",
     name: "Sanusi Taiwo Ayodeji",
-    officeEmail: "gensec@nacos-unilag.example",
-    goToThemFor: "[Draft - to be confirmed by executive] Official departmental correspondence, Secretariat clearance records, HOD letters, and NACOS Hub concern tracking.",
+    officeEmail: "gensec@nacoss-unilag.example",
+    goToThemFor: "[Draft - to be confirmed by executive] Official departmental correspondence, Secretariat clearance records, HOD letters, and NACOSS Hub concern tracking.",
     handles: [
       "Secretariat operations and official meeting documentation",
       "Official departmental letters, recommendation requests, and HOD endorsements",
       "Constitutional records, committee registrations, and administrative archives",
-      "NACOS Hub concern tracking oversight and executive accountability",
+      "NACOSS Hub concern tracking oversight and executive accountability",
     ],
     isListed: true,
     emailConsent: false,
@@ -81,7 +81,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "assistant-general-secretary",
     position: "Assistant General Secretary",
     name: "Abimbola Obafisayo",
-    officeEmail: "ags@nacos-unilag.example",
+    officeEmail: "ags@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Secretariat meeting minutes, event attendance logs, and administrative record assistance.",
     handles: [
       "Assisting the General Secretary with Secretariat operations",
@@ -97,11 +97,11 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "financial-secretary",
     position: "Financial Secretary",
     name: "Adeyanju Iremide Joseph",
-    officeEmail: "finsec@nacos-unilag.example",
+    officeEmail: "finsec@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental dues payment, online dues verification, clearance receipts, and financial clearance forms.",
     handles: [
       "Departmental dues collection, bank transfer verification, and receipts",
-      "Issuance of official NACOS exam and clearance receipts",
+      "Issuance of official NACOSS exam and clearance receipts",
       "Maintenance of transparent student financial ledgers",
       "Financial clearance verification for graduating and returning students",
     ],
@@ -113,10 +113,10 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "treasurer",
     position: "Treasurer",
     name: "Akinsohun Oluwanifemi Susanna",
-    officeEmail: "treasurer@nacos-unilag.example",
+    officeEmail: "treasurer@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental fund disbursements, event budget reimbursements, and official financial audits.",
     handles: [
-      "Management of NACOS departmental bank accounts and cash flow",
+      "Management of NACOSS departmental bank accounts and cash flow",
       "Disbursement of approved committee budgets and vendor payments",
       "Reimbursement processing for official departmental initiatives",
       "Preparation of periodic financial statements and audit balance sheets",
@@ -129,10 +129,10 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "social-secretary",
     position: "Social Secretary",
     name: "Anuoluwapo Odebiyi",
-    officeEmail: "socials@nacos-unilag.example",
+    officeEmail: "socials@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental social events, freshers orientation, annual dinner tickets, and tech social mixers.",
     handles: [
-      "Planning the Annual NACOS Dinner & Awards Night",
+      "Planning the Annual NACOSS Dinner & Awards Night",
       "Freshers Orientation Week and tech mixer social gatherings",
       "Hackathon social night logistics, gaming breaks, and entertainment",
       "Departmental merchandise, hoodies, and social packages",
@@ -145,12 +145,12 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "sports-secretary",
     position: "Sports Secretary",
     name: "Olaronke Bakare",
-    officeEmail: "sports@nacos-unilag.example",
+    officeEmail: "sports@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Departmental sports teams, inter-level football matches, Dean's Cup representation, and esports tournaments.",
     handles: [
       "Inter-level football tournaments, basketball, and athletics events",
       "Faculty of Science Dean's Cup team selection and training sessions",
-      "Annual NACOS Esports Championship (FIFA, CODM, Chess, Scrabble)",
+      "Annual NACOSS Esports Championship (FIFA, CODM, Chess, Scrabble)",
       "Sports facility access and student wellness fitness activities",
     ],
     isListed: true,
@@ -161,7 +161,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "welfare-secretary",
     position: "Welfare Secretary",
     name: "John Samuel Olamide",
-    officeEmail: "welfare@nacos-unilag.example",
+    officeEmail: "welfare@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Student lab facilities, AC and power complaints, lecture hall acoustics, hostel issues, and emergency aid.",
     handles: [
       "Computer Science laboratory conditions (AC units, chairs, power sockets, lighting)",
@@ -177,11 +177,11 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "software-director",
     position: "Software Director",
     name: "Name to be confirmed",
-    officeEmail: "software@nacos-unilag.example",
+    officeEmail: "software@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Developer circles, coding masterclasses, hackathons, open-source workshops, and departmental tech portal.",
     handles: [
-      "Organizing NACOS coding bootcamps, masterclasses, and code labs",
-      "Annual NACOS UNILAG Hackathon problem statements and mentorship",
+      "Organizing NACOSS coding bootcamps, masterclasses, and code labs",
+      "Annual NACOSS UNILAG Hackathon problem statements and mentorship",
       "Open-source projects, GitHub organization management, and code reviews",
       "Departmental digital portal development and developer community circles",
     ],
@@ -193,7 +193,7 @@ export const EXECUTIVES_LIST: ExecutiveDefinition[] = [
     officeSlug: "pro",
     position: "Public Relations Officer (PRO)",
     name: "Oseh Praise",
-    officeEmail: "pro@nacos-unilag.example",
+    officeEmail: "pro@nacoss-unilag.example",
     goToThemFor: "[Draft - to be confirmed by executive] Official broadcast notices, social media features, press coverage, event promotions, and media partnerships.",
     handles: [
       "Official departmental broadcast announcements across social channels and WhatsApp",

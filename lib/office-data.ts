@@ -118,7 +118,7 @@ export async function createOfficeMeeting(input: {
   const sentRecipients = new Set<string>();
   for (const { officeSlug } of EXECUTIVES_LIST) {
     const officeEmail = EXECUTIVES_LIST.find((executive) => executive.officeSlug === officeSlug)?.officeEmail;
-    const recipient = process.env.TEST_MODE !== "false" && officeEmail?.endsWith("@nacos-unilag.example")
+    const recipient = process.env.TEST_MODE !== "false" && officeEmail?.endsWith("@nacoss-unilag.example")
       ? "sanayodeji087@gmail.com"
       : officeEmail;
     if (recipient && !sentRecipients.has(recipient)) {
@@ -280,7 +280,7 @@ export async function sendDueMeetingReminders() {
         const executive = EXECUTIVES_LIST.find((item) => item.officeSlug === office);
         if (!executive) continue;
         const recipient = process.env.TEST_MODE !== "false" &&
-          executive.officeEmail.endsWith("@nacos-unilag.example")
+          executive.officeEmail.endsWith("@nacoss-unilag.example")
           ? "sanayodeji087@gmail.com"
           : executive.officeEmail;
         if (!recipients.has(recipient)) {

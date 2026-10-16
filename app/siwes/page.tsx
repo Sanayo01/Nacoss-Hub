@@ -338,7 +338,7 @@ export default function SiwesPage() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full bg-mint/10 border border-mint/20 px-3 py-1 text-xs font-semibold text-mint">
             <Briefcase className="h-3.5 w-3.5" />
-            NACOS UNILAG Placements & Alumni Hub
+            NACOSS UNILAG Placements & Alumni Hub
           </div>
           <h1 className="text-2xl md:text-4xl font-extrabold uppercase tracking-tight text-navy-heading">
             SIWES & Alumni Bridge
@@ -605,7 +605,7 @@ export default function SiwesPage() {
 
                     <div className="p-3.5 rounded-2xl border border-navy-border bg-navy-bgStart space-y-1">
                       <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase text-mint">
-                        <Sparkles className="h-3.5 w-3.5" /> Career Advice for NACOS Undergrads
+                        <Sparkles className="h-3.5 w-3.5" /> Career Advice for NACOSS Undergrads
                       </div>
                       <p className="text-xs text-navy-body leading-relaxed">{alum.advice}</p>
                     </div>
@@ -792,7 +792,7 @@ export default function SiwesPage() {
                     className="mt-0.5 rounded border-navy-border text-mint focus:ring-mint"
                   />
                   <span className="text-[11px] text-navy-heading font-medium">
-                    I agree to my details being shown to NACOS students. I can ask for removal anytime.
+                    I agree to my details being shown to NACOSS students. I can ask for removal anytime.
                   </span>
                 </label>
               </div>
@@ -950,7 +950,7 @@ export default function SiwesPage() {
                   <Shield className="h-3.5 w-3.5" /> Alumni Privacy Guarantee
                 </div>
                 <p className="text-[11px] text-navy-subtle leading-relaxed">
-                  Only the fields provided above will be visible to matriculated NACOS students. Phone numbers and private contacts will never be requested.
+                  Only the fields provided above will be visible to matriculated NACOSS students. Phone numbers and private contacts will never be requested.
                 </p>
                 <label className="flex items-start gap-2 cursor-pointer pt-1">
                   <input
@@ -960,7 +960,7 @@ export default function SiwesPage() {
                     className="mt-0.5 rounded border-navy-border text-mint focus:ring-mint"
                   />
                   <span className="text-[11px] text-navy-heading font-medium">
-                    I agree to my details being shown to NACOS students. I can ask for removal anytime.
+                    I agree to my details being shown to NACOSS students. I can ask for removal anytime.
                   </span>
                 </label>
               </div>

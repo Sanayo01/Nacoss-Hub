@@ -1,6 +1,6 @@
-# Contributing to NACOS Hub
+# Contributing to NACOSS Hub
 
-Welcome! We are excited to collaborate with student software engineers and alumni volunteers to build and harden NACOS Hub for production.
+Welcome! We are excited to collaborate with student software engineers and alumni volunteers to build and harden NACOSS Hub for production.
 
 ---
 
@@ -8,7 +8,7 @@ Welcome! We are excited to collaborate with student software engineers and alumn
 
 1. **Fork & Clone**:
    ```bash
-   git clone https://github.com/nacos-unilag/nacos-hub.git
+   git clone https://github.com/nacoss-unilag/nacos-hub.git
    cd nacos-hub
    ```
 2. **Install & Initialize**:

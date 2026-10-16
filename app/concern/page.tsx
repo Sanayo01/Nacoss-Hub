@@ -549,7 +549,7 @@ function ConcernForm() {
             <Sparkles className="h-5 w-5 text-mint shrink-0 mt-0.5" />
             <div>
               <strong className="text-navy-heading block">Keep this ID safe:</strong>
-              Use your Tracking ID on NACOS Hub to track progress, view audit updates, and inspect the official executive response when resolved.
+              Use your Tracking ID on NACOSS Hub to track progress, view audit updates, and inspect the official executive response when resolved.
             </div>
           </div>
 

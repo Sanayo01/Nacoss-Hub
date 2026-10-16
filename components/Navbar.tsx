@@ -15,7 +15,7 @@ export default function Navbar() {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-extrabold text-lg tracking-wider text-navy-heading uppercase">
-                NACOS <span className="text-mint">HUB</span>
+                NACOSS <span className="text-mint">HUB</span>
               </span>
               <span className="hidden sm:inline-block rounded-full bg-mint/10 px-2 py-0.5 text-[10px] font-semibold text-mint border border-mint/20">
                 UNILAG

@@ -31,7 +31,7 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
   let isRedirected = false;
 
   // If email is placeholder or not in real test emails, redirect in TEST_MODE
-  if (isTestMode && recipientEmail.includes("@nacos-unilag.example")) {
+  if (isTestMode && recipientEmail.includes("@nacoss-unilag.example")) {
     const knownEmail = REAL_TEST_EMAILS[payload.targetOfficeSlug];
     recipientEmail = knownEmail || DEFAULT_GEN_SEC_EMAIL;
     isRedirected = true;
@@ -39,8 +39,8 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
 
   // 1. Executive Notification Email
   const execSubject = isRedirected
-    ? `[NACOS Hub Test Mode] New Concern for ${payload.targetOfficeName}: ${payload.subject}`
-    : `[NACOS Hub] New Concern Assigned (${payload.trackingId}): ${payload.subject}`;
+    ? `[NACOSS Hub Test Mode] New Concern for ${payload.targetOfficeName}: ${payload.subject}`
+    : `[NACOSS Hub] New Concern Assigned (${payload.trackingId}): ${payload.subject}`;
 
   const senderInfoHtml = payload.isAnonymous
     ? `<strong>Sender:</strong> Anonymous Student (${payload.level || "Unspecified Level"})`
@@ -49,7 +49,7 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
   const execHtml = `
     <div style="font-family: Arial, sans-serif; background-color: #0B1220; color: #F5F5F0; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
       <div style="border-bottom: 2px solid #34D399; padding-bottom: 12px; margin-bottom: 20px;">
-        <h2 style="color: #34D399; margin: 0;">NACOS Hub - Executive Alert</h2>
+        <h2 style="color: #34D399; margin: 0;">NACOSS Hub - Executive Alert</h2>
         <p style="color: #94A3B8; font-size: 14px; margin: 4px 0 0 0;">New student concern received</p>
       </div>
 
@@ -77,7 +77,7 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
         </a>
       </div>
       <p style="color: #64748B; font-size: 12px; text-align: center; margin-top: 24px;">
-        NACOS UNILAG Hub &bull; Student-to-Executive Platform
+        NACOSS UNILAG Hub &bull; Student-to-Executive Platform
       </p>
     </div>
   `;
@@ -91,17 +91,17 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
 
   // 2. Student Receipt Confirmation Email (if student provided an email)
   if (payload.senderEmail && payload.senderEmail.trim() !== "") {
-    const studentSubject = `[NACOS Hub] Concern Received - Tracking ID: ${payload.trackingId}`;
+    const studentSubject = `[NACOSS Hub] Concern Received - Tracking ID: ${payload.trackingId}`;
     const studentHtml = `
       <div style="font-family: Arial, sans-serif; background-color: #0B1220; color: #F5F5F0; padding: 24px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
         <div style="border-bottom: 2px solid #34D399; padding-bottom: 12px; margin-bottom: 20px;">
-          <h2 style="color: #34D399; margin: 0;">NACOS Hub - Confirmation</h2>
+          <h2 style="color: #34D399; margin: 0;">NACOSS Hub - Confirmation</h2>
           <p style="color: #94A3B8; font-size: 14px; margin: 4px 0 0 0;">Your concern has been registered</p>
         </div>
 
         <p style="color: #F5F5F0; font-size: 15px;">Hello ${payload.senderName || "Student"},</p>
         <p style="color: #94A3B8; font-size: 14px; line-height: 1.5;">
-          Thank you for reaching out to NACOS UNILAG Executive Council. Your concern regarding <strong>"${payload.subject}"</strong> has been assigned to <strong>${payload.targetOfficeName}</strong>.
+          Thank you for reaching out to NACOSS UNILAG Executive Council. Your concern regarding <strong>"${payload.subject}"</strong> has been assigned to <strong>${payload.targetOfficeName}</strong>.
         </p>
 
         <div style="background-color: #131C2E; border: 1px dashed #34D399; border-radius: 8px; padding: 16px; text-align: center; margin: 20px 0;">
@@ -110,7 +110,7 @@ export async function sendConcernEmails(payload: ConcernEmailPayload) {
         </div>
 
         <p style="color: #94A3B8; font-size: 13px;">
-          Keep this Tracking ID safe. You can use it anytime on NACOS Hub to check response status and audit updates.
+          Keep this Tracking ID safe. You can use it anytime on NACOSS Hub to check response status and audit updates.
         </p>
 
         <div style="text-align: center; margin-top: 24px;">
@@ -134,12 +134,12 @@ export async function sendOfficeNotification(office: string, title: string, mess
   const executive = EXECUTIVES_LIST.find((item) => item.officeSlug === office);
   if (!executive) throw new Error(`Cannot notify unknown office: ${office}`);
   const isTestMode = process.env.TEST_MODE !== "false";
-  const recipient = isTestMode && executive.officeEmail.endsWith("@nacos-unilag.example")
+  const recipient = isTestMode && executive.officeEmail.endsWith("@nacoss-unilag.example")
     ? DEFAULT_GEN_SEC_EMAIL
     : executive.officeEmail;
   await dispatchEmail({
     to: recipient,
-    subject: `[NACOS Hub] ${title}`,
+    subject: `[NACOSS Hub] ${title}`,
     html: `<div style="font-family:Arial,sans-serif"><h2>${escapeHtml(title)}</h2><p>${escapeHtml(message)}</p></div>`,
     tag: "Office Notification",
   });
@@ -170,7 +170,7 @@ async function dispatchEmail({
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
   const port = parseInt(process.env.SMTP_PORT || "587", 10);
-  const from = process.env.MAIL_FROM || "NACOS UNILAG Hub <noreply@nacos-unilag.org>";
+  const from = process.env.MAIL_FROM || "NACOSS UNILAG Hub <noreply@nacoss-unilag.org>";
 
   // Dev mode check: If no host or pass is set, log to console
   if (!host || !pass || host.trim() === "" || pass.trim() === "") {

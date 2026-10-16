@@ -27,9 +27,9 @@ async function main() {
       position: "President",
       officeSlug: "president",
       photoUrl: null,
-      bio: "Leading NACOS UNILAG towards technological innovation, student welfare advocacy, and strategic partnerships across the tech ecosystem.",
+      bio: "Leading NACOSS UNILAG towards technological innovation, student welfare advocacy, and strategic partnerships across the tech ecosystem.",
       goToThemFor: "High-level department advocacy, external partnerships, and presidential interventions.",
-      officeEmail: "president@nacos-unilag.example",
+      officeEmail: "president@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -39,7 +39,7 @@ async function main() {
       photoUrl: null,
       bio: "Overseeing internal committee coordination, female computing initiatives, and student mentorship programs.",
       goToThemFor: "Mentorship opportunities, Women in Tech circle, and internal executive committees.",
-      officeEmail: "vice-president@nacos-unilag.example",
+      officeEmail: "vice-president@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -49,7 +49,7 @@ async function main() {
       photoUrl: null,
       bio: "Managing departmental administrative operations, official correspondence, constitutional records, and student concern tracking.",
       goToThemFor: "Official departmental letters, general inquiries, status tracking, and executive accountability.",
-      officeEmail: "gensec@nacos-unilag.example",
+      officeEmail: "gensec@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -59,7 +59,7 @@ async function main() {
       photoUrl: null,
       bio: "Assisting the Secretariat with meeting documentation, logistics, and student records management.",
       goToThemFor: "Meeting minutes, event registration confirmations, and Secretariat support.",
-      officeEmail: "ags@nacos-unilag.example",
+      officeEmail: "ags@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -67,9 +67,9 @@ async function main() {
       position: "Financial Secretary",
       officeSlug: "financial-secretary",
       photoUrl: null,
-      bio: "Handling departmental dues, receipts issuance, and transparent financial record keeping for all NACOS events.",
+      bio: "Handling departmental dues, receipts issuance, and transparent financial record keeping for all NACOSS events.",
       goToThemFor: "Departmental dues payment, clearance receipts, and financial clearance inquiries.",
-      officeEmail: "finsec@nacos-unilag.example",
+      officeEmail: "finsec@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -79,7 +79,7 @@ async function main() {
       photoUrl: null,
       bio: "Managing departmental funds disbursement, budget audits, and financial integrity.",
       goToThemFor: "Reimbursements, budget verification, and vendor payment confirmation.",
-      officeEmail: "treasurer@nacos-unilag.example",
+      officeEmail: "treasurer@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -89,7 +89,7 @@ async function main() {
       photoUrl: null,
       bio: "Broadcasting official announcements, managing social channels, media partnerships, and press releases.",
       goToThemFor: "Event promotion, official broadcasts, social media features, and press coverage.",
-      officeEmail: "pro@nacos-unilag.example",
+      officeEmail: "pro@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -98,8 +98,8 @@ async function main() {
       officeSlug: "social-secretary",
       photoUrl: null,
       bio: "Organizing departmental dinners, hackathons social night, freshers orientation, and gaming tournaments.",
-      goToThemFor: "NACOS social events, dinner ticketing, orientation week, and gaming competitions.",
-      officeEmail: "socials@nacos-unilag.example",
+      goToThemFor: "NACOSS social events, dinner ticketing, orientation week, and gaming competitions.",
+      officeEmail: "socials@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -108,8 +108,8 @@ async function main() {
       officeSlug: "sports-secretary",
       photoUrl: null,
       bio: "Coordinating inter-level football matches, e-sports leagues, and Faculty Dean's Cup representation.",
-      goToThemFor: "NACOS sports teams, Dean's Cup registration, and esports league entry.",
-      officeEmail: "sports@nacos-unilag.example",
+      goToThemFor: "NACOSS sports teams, Dean's Cup registration, and esports league entry.",
+      officeEmail: "sports@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -119,7 +119,7 @@ async function main() {
       photoUrl: null,
       bio: "Championing student mental health, lab facility concerns, lecture hall acoustics, and emergency aid.",
       goToThemFor: "Hostel/Lab welfare issues, lecture hall complaints, and emergency student assistance.",
-      officeEmail: "welfare@nacos-unilag.example",
+      officeEmail: "welfare@nacoss-unilag.example",
       isActive: true,
     },
     {
@@ -129,7 +129,7 @@ async function main() {
       photoUrl: null,
       bio: "Leading software development projects, open-source workshops, developer circles, and departmental portal tech.",
       goToThemFor: "Code lab sessions, developer mentorship, open-source projects, and GitHub community.",
-      officeEmail: "software@nacos-unilag.example",
+      officeEmail: "software@nacoss-unilag.example",
       isActive: true,
     },
   ];
@@ -143,21 +143,21 @@ async function main() {
   const announcementsData = [
     {
       title: "URGENT: CSC 301 Mid-Semester Test Rescheduled to Friday",
-      body: "Please note that the CSC 301 (Data Structures) test originally fixed for Thursday morning has been rescheduled to Friday at 10:00 AM in Lab 2. All 300L students must present their NACOS dues receipt at the entrance.",
+      body: "Please note that the CSC 301 (Data Structures) test originally fixed for Thursday morning has been rescheduled to Friday at 10:00 AM in Lab 2. All 300L students must present their NACOSS dues receipt at the entrance.",
       category: "Urgent",
       pinned: true,
       authorOfficeSlug: "vice-president",
     },
     {
-      title: "NACOS Annual Hackathon 2026 Registration Open!",
-      body: "Build the future of Fintech, AI, and EdTech! The 2026 NACOS UNILAG Hackathon features total prizes of ₦1,500,000, sponsor mentorship from top tech companies, and free refreshments. Form teams of 3-4 students across 100L-500L.",
+      title: "NACOSS Annual Hackathon 2026 Registration Open!",
+      body: "Build the future of Fintech, AI, and EdTech! The 2026 NACOSS UNILAG Hackathon features total prizes of ₦1,500,000, sponsor mentorship from top tech companies, and free refreshments. Form teams of 3-4 students across 100L-500L.",
       category: "Event",
       pinned: true,
       authorOfficeSlug: "software-director",
     },
     {
       title: "Departmental Dues Payment Deadline & Clearance Notice",
-      body: "All students are advised to pay their departmental dues before the upcoming exam clearance exercise. Payment details and online verification receipt generator are available on the NACOS Hub.",
+      body: "All students are advised to pay their departmental dues before the upcoming exam clearance exercise. Payment details and online verification receipt generator are available on the NACOSS Hub.",
       category: "Deadline",
       pinned: false,
       authorOfficeSlug: "financial-secretary",
@@ -177,8 +177,8 @@ async function main() {
       authorOfficeSlug: "general-secretary",
     },
     {
-      title: "NACOS Sports Festival & E-Sports Championship",
-      body: "Get ready for the annual NACOS Sports Week! Inter-level FIFA 26 tournament, 5-a-side football, and chess championships kick off at the UNILAG Sports Centre.",
+      title: "NACOSS Sports Festival & E-Sports Championship",
+      body: "Get ready for the annual NACOSS Sports Week! Inter-level FIFA 26 tournament, 5-a-side football, and chess championships kick off at the UNILAG Sports Centre.",
       category: "General",
       pinned: false,
       authorOfficeSlug: "sports-secretary",
@@ -208,7 +208,7 @@ async function main() {
       category: "Academic",
     },
     {
-      title: "NACOS Hackathon 2026 Kickoff & Mentorship",
+      title: "NACOSS Hackathon 2026 Kickoff & Mentorship",
       description: "Opening ceremony, problem statement announcement, and team pairing.",
       location: "Faculty of Science Auditorium",
       startsAt: addDays(5),
@@ -232,7 +232,7 @@ async function main() {
       category: "Academic",
     },
     {
-      title: "NACOS Freshers Welcome & Tech Fireside Chat",
+      title: "NACOSS Freshers Welcome & Tech Fireside Chat",
       description: "Welcome event for 100L freshers featuring talks from senior software engineers and alumni.",
       location: "UNILAG Lagoon Front Park",
       startsAt: addDays(15),
@@ -241,14 +241,14 @@ async function main() {
     },
     {
       title: "Inter-Level FIFA 26 & Chess Championship",
-      description: "Annual NACOS esports competition with trophies and cash prizes.",
+      description: "Annual NACOSS esports competition with trophies and cash prizes.",
       location: "Student Union Building (SUB) Hall",
       startsAt: addDays(18),
       endsAt: addDays(18),
       category: "Sports",
     },
     {
-      title: "NACOS Tech Career Fair & Internship Drive",
+      title: "NACOSS Tech Career Fair & Internship Drive",
       description: "Meet recruiters from Paystack, Flutterwave, Moniepoint, and Kuda Bank.",
       location: "Faculty of Science Foyer",
       startsAt: addDays(22),
@@ -256,7 +256,7 @@ async function main() {
       category: "Career",
     },
     {
-      title: "NACOS End-of-Semester Dinner & Awards Night",
+      title: "NACOSS End-of-Semester Dinner & Awards Night",
       description: "Celebrating academic excellence, tech achievements, and departmental leadership.",
       location: "UNILAG Multi-Purpose Hall (MPH)",
       startsAt: addDays(30),
@@ -273,10 +273,10 @@ async function main() {
   // 4. Documents
   const documentsData = [
     {
-      title: "NACOS UNILAG Constitution (Revised 2025)",
+      title: "NACOSS UNILAG Constitution (Revised 2025)",
       description: "The official governing constitution of the Nigerian Association of Computing Students, UNILAG Chapter.",
       category: "Handbook",
-      fileUrl: "https://example.com/docs/nacos-unilag-constitution.pdf",
+      fileUrl: "https://example.com/docs/nacoss-unilag-constitution.pdf",
     },
     {
       title: "Departmental Dues Payment & Receipt Form",
@@ -297,7 +297,7 @@ async function main() {
       fileUrl: "https://example.com/docs/course-registration-guide.pdf",
     },
     {
-      title: "NACOS Hackathon Sponsorship Proposal Template",
+      title: "NACOSS Hackathon Sponsorship Proposal Template",
       description: "Official sponsorship proposal deck for student lead initiatives and hackathons.",
       category: "Proposal",
       fileUrl: "https://example.com/docs/hackathon-sponsorship-proposal.pdf",
@@ -309,7 +309,7 @@ async function main() {
       fileUrl: "https://example.com/docs/grade-review-form.pdf",
     },
     {
-      title: "NACOS Committee Application & Volunteer Form",
+      title: "NACOSS Committee Application & Volunteer Form",
       description: "Join the Secretariat, Welfare, Media, or Software committees.",
       category: "Form",
       fileUrl: "https://example.com/docs/committee-volunteer-form.pdf",
@@ -327,7 +327,7 @@ async function main() {
       fileUrl: "https://example.com/docs/event-budget-template.xlsx",
     },
     {
-      title: "NACOS Project Defense Logbook Sample",
+      title: "NACOSS Project Defense Logbook Sample",
       description: "Sample final year project defense presentation outline and documentation standard.",
       category: "Handbook",
       fileUrl: "https://example.com/docs/project-defense-sample.pdf",
@@ -365,7 +365,7 @@ async function main() {
       city: "Lagos (Victoria Island)",
       startDate: "2026-03-15",
       endDate: "2026-09-15",
-      howIGotIn: "Submitted portfolio during the UNILAG NACOS tech exhibition.",
+      howIGotIn: "Submitted portfolio during the UNILAG NACOSS tech exhibition.",
       tipsToApply: "Ensure your portfolio site is clean and responsive. Showcase interactive web applications with real API integrations.",
       contactPreference: "email via the Hub",
       consentGiven: true,
@@ -440,7 +440,7 @@ async function main() {
       city: "Lagos (Ikeja)",
       startDate: "2026-04-01",
       endDate: "2026-09-30",
-      howIGotIn: "Referral following the NACOS annual CTF tournament.",
+      howIGotIn: "Referral following the NACOSS annual CTF tournament.",
       tipsToApply: "Participate in CTF competitions and show certifications like CompTIA Security+ or TryHackMe rooms.",
       contactPreference: "email via the Hub",
       consentGiven: true,
@@ -470,7 +470,7 @@ async function main() {
       city: "Lagos (Ikeja)",
       startDate: "2026-03-01",
       endDate: "2026-08-31",
-      howIGotIn: "Applied via student internship drive hosted by NACOS.",
+      howIGotIn: "Applied via student internship drive hosted by NACOSS.",
       tipsToApply: "Learn end-to-end automation with Playwright. Test cases and boundary testing skills are highly valued.",
       contactPreference: "LinkedIn only",
       consentGiven: true,
@@ -583,7 +583,7 @@ async function main() {
   // 6. Pulse Poll & Votes
   const poll = await prisma.pulsePoll.create({
     data: {
-      question: "Which tech stack or track should NACOS prioritize for the upcoming 6-week Masterclass Bootcamp?",
+      question: "Which tech stack or track should NACOSS prioritize for the upcoming 6-week Masterclass Bootcamp?",
       options: JSON.stringify([
         "Full-Stack Web Dev (Next.js & Node.js)",
         "Mobile App Development (Flutter & React Native)",

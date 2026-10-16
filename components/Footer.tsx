@@ -10,11 +10,11 @@ export default function Footer() {
           <div className="flex items-center gap-2">
             <ShieldCheck className="h-4 w-4 text-mint" />
             <span className="font-bold text-sm text-navy-heading tracking-wider uppercase">
-              NACOS HUB UNILAG
+              NACOSS HUB UNILAG
             </span>
           </div>
           <p className="text-xs text-navy-body">
-            Built with <Heart className="inline-block h-3 w-3 text-mint mx-0.5 fill-mint" /> by the idea creator for NACOS UNILAG
+            Built with <Heart className="inline-block h-3 w-3 text-mint mx-0.5 fill-mint" /> by the idea creator for NACOSS UNILAG
           </p>
         </div>
 
