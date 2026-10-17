@@ -1,6 +1,8 @@
 import { FinanceQueryForm } from "@/components/StudentServiceForms";
 import { getPublicFinanceSummary } from "@/lib/remaining-offices";
 
+export const dynamic = "force-dynamic";
+
 export default async function FinancePage() {
   const summary = await getPublicFinanceSummary();
   return <main className="mx-auto max-w-5xl space-y-6 px-4 py-8">

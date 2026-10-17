@@ -1,6 +1,8 @@
 import { WelfareCaseForm } from "@/components/StudentServiceForms";
 import { listPublicWellbeingResources } from "@/lib/remaining-offices";
 
+export const dynamic = "force-dynamic";
+
 export default async function WelfarePage() {
   const { drives, resources } = await listPublicWellbeingResources();
   return <main className="mx-auto max-w-5xl space-y-6 px-4 py-8">

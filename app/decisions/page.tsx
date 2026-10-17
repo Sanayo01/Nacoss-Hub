@@ -1,5 +1,7 @@
 import { getPublishedDecisionDigests } from "@/lib/minutes-workflow";
 
+export const dynamic = "force-dynamic";
+
 export default async function DecisionsPage() {
   const digests = await getPublishedDecisionDigests();
   return <main className="mx-auto min-h-screen max-w-4xl space-y-6 px-4 py-12">

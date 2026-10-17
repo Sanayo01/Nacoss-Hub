@@ -1,5 +1,7 @@
 import { getScorecardPromises } from "@/lib/secretariat";
 
+export const dynamic = "force-dynamic";
+
 export default async function PublicScorecardPage() {
   const promises = await getScorecardPromises(true);
   return <main className="mx-auto min-h-screen max-w-4xl space-y-6 px-4 py-12">
